@@ -1,0 +1,22 @@
+{
+	"name": "Pedidos de Comida",
+	"description": "Sistema PHP de Pedidos de Comida",
+	"authors": [
+		{
+			"name": "House Cursos",
+			"email": "contato@housecursos.com",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">= 7.0.0",
+		"filp/whoops": "~2.2.0",
+		"symfony/http-foundation": "^3.4"
+
+	},
+	"autoload": {
+		"psr-4": {
+			"PedidosComidas\\": "src/"
+		}
+	}
+}
