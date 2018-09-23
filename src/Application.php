@@ -21,7 +21,9 @@ class Application {
 
 		self::$response = self::$injector->get('Symfony\Component\HttpFoundation\Response');
 
+		$renderer = self::$injector->get('PedidosComidas\Template\SimpleTemplate');
+
 		$request = self::$request::createFromGlobals();
-		self::$routerManager = new RouterManager($request, self::$response);
+		self::$routerManager = new RouterManager($request, self::$response, $renderer);
 	}
 }

@@ -6,10 +6,13 @@ class RouterManager {
 	private $request;
 	
 	private $response;
+	
+	private $renderer;
 
-	function __construct($request, $response) {
+	function __construct($request, $response, $renderer) {
 		$this->request = $request;
 		$this->response = $response;
+		$this->renderer = $renderer;
 
 		$this->path = $this->request->getPathInfo();
 
@@ -29,7 +32,7 @@ class RouterManager {
 					$controller = new $controllerPieces[0]();
 
 					if (method_exists($controller, 'index')) {
-						$controller->index($this->request, $this->response);
+						$controller->index($this->request, $this->response, $this->renderer);
 					} else {
 						$message = 'O método do Controller não Existe';
 						throw new \Exception($message, 404);						
@@ -44,7 +47,7 @@ class RouterManager {
 					$methodStr = $controllerPieces[1];
 
 					if (method_exists($controller, $methodStr))
-						$controller->$methodStr($this->request, $this->response);
+						$controller->$methodStr($this->request, $this->response, $this->renderer);
 					else {
 						$message = 'O método do Controller não Existe';
 						throw new \Exception($message, 404);

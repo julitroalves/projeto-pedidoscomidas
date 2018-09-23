@@ -3,18 +3,30 @@
 namespace PedidosComidas\Controllers;
 
 class HomeController {
-	public function index($request, $response) {
 
-		// $response = new Response('Método Index sendo Executado!');
-		$response->setContent('Método Index sendo Executado!');
+	public function index($request, $response, $renderer) {
+		$name = $request->query->get('name', 'Julio Alves');
+
+		$context = [
+			'title' => "Home Dinâmica 100% melhorada!",
+			'name' => $name,
+		];
+
+		$content = $renderer->render("home.index", $context);
+
+		$response->setContent($content);
 
 		return $response->send();
 	}
 
-	public function home($request, $response) {
-		$response->setContent('Método Home sendo Executado!');
+	public function home($request, $response, $renderer) {
+		$context = [
+			'title' => "Home Dinâmica 100% melhorada!"
+		];
 
-		// $response = new Response('Método Home sendo Executado!');
+		$content = $renderer->render("home.index", $context);
+
+		$response->setContent($content);
 
 		return $response->send();
 	}
