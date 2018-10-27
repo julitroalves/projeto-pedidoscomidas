@@ -8,6 +8,12 @@
 		<h1><?php echo $title; ?></h1>
 
 		<p>Seja muito bem-vindo, <?php echo $name; ?>!<p>
+
+		<ul>
+			<?php foreach($users as $user): ?>
+				<li><?php echo $user->username . ' - ' . $user->email; ?></li>
+			<?php endforeach; ?>
+		</ul>
 	</div>
 </body>
 </html>
