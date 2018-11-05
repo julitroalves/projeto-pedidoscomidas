@@ -3,15 +3,33 @@
 namespace PedidosComidas\Controllers;
 
 use PedidosComidas\Database\PdoAdapter;
+use PedidosComidas\Models\User\UserDataMapper;
 
 class HomeController {
+
+	public function createUser() {
+		$pdo = new PdoAdapter("mysql:host=localhost;dbname=housecursos_pedidoscomidas", "root", "qwe123");
+
+		$usersMapper = new UserDataMapper($pdo);
+
+		$userCreated = $usersMapper->insert([
+			'username' => 'housecursos',
+			'password' => '123456',
+			'email'    => 'contato@housecursos.com',
+			'name'     => 'House Cursos da Silva Oliveira',
+			'created'  => date('Y-m-d H:i:s', time()),
+			'updated'  => date('Y-m-d H:i:s', time())
+		]);
+
+		return $userCreated;
+	}
 
 	public function loadUsers() {
 		$pdo = new PdoAdapter("mysql:host=localhost;dbname=housecursos_pedidoscomidas", "root", "qwe123");
 
-		// return $pdo->select('users')->fetchAll();
+		$usersMapper = new UserDataMapper($pdo);
 
-		$users = $pdo->query("SELECT * FROM users");
+		$users = $usersMapper->findAll();
 
 		return $users;
 	}
@@ -19,9 +37,8 @@ class HomeController {
 	public function index($request, $response, $renderer) {
 		$name = $request->query->get('name', 'Julio Alves');
 
+		$this->createUser();
 		$users = $this->loadUsers();
-
-		var_dump($users);
 
 		$context = [
 			'title' => "Home Dinâmica 100% melhorada!",

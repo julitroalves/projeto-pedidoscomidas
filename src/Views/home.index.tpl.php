@@ -12,7 +12,7 @@
 		<ul>
 			
 			<?php foreach($users as $user): ?>
-				<li><?php echo $user['name'] . ' - ' . $user['email']; ?></li>
+				<li><?php echo $user->name . ' - ' . $user->email; ?></li>
 			<?php endforeach; ?>
 
 		</ul>
