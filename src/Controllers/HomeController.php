@@ -2,10 +2,14 @@
 
 namespace PedidosComidas\Controllers;
 
+use PedidosComidas\Database\PdoAdapter;
+
 class HomeController {
 
 	public function loadUsers() {
-		$pdo = new \PDO("mysql:host=localhost;dbname=housecursos_pedidoscomidas", "root", "qwe123");
+		$pdo = new PdoAdapter("mysql:host=localhost;dbname=housecursos_pedidoscomidas", "root", "qwe123");
+
+		// return $pdo->select('users')->fetchAll();
 
 		$users = $pdo->query("SELECT * FROM users");
 
