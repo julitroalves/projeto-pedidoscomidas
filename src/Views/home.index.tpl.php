@@ -11,8 +11,13 @@
 
 		<ul>
 			
-			<?php foreach($users as $user): ?>
-				<li><?php echo $user->name . ' - ' . $user->email; ?></li>
+			<?php foreach($products as $product): ?>
+				<li>
+					<?php 
+						echo $product->title . ' - ' . $product->description . ' - Preço: '. $product->price; 
+					?>
+						
+				</li>
 			<?php endforeach; ?>
 
 		</ul>

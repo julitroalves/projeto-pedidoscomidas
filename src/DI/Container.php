@@ -44,8 +44,13 @@ class Container implements ContainerInterface {
 			return $reflector->newInstance();
 		}
 
-		$parameters = $constructor->getParameters();
-		$dependencies = $this->getDependencies($parameters);
+		if (empty($parameters)) {
+			$parameters = $constructor->getParameters();
+			$dependencies = $this->getDependencies($parameters);
+		}
+		else {
+			$dependencies = $parameters;
+		}
 
 		return $reflector->newInstanceArgs($dependencies);
 	}

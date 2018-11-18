@@ -7,12 +7,19 @@ use PedidosComidas\Models\AbstractDataMapper;
 class UserDataMapper extends AbstractDataMapper {
 	protected $entityTable = "users";
 
-	public function insert(array $row) {
-		$id = $this->databaseAdapter->insert($this->entityTable, $row);
+	public function insert(UserEntity $user) {
+		$id = $this->databaseAdapter->insert($this->entityTable, [
+			'username' => $user->username,
+			'password' => $user->password,
+			'email' => $user->email,
+			'name' => $user->name,
+			'created' => $user->created,
+			'updated' => $user->updated,
+		]);
 
-		$row['id'] = $id;
+		$user->id = $id;
 
-		return $this->createEntity($row);
+		return $id;
 	}
 
 	protected function createEntity($row) {

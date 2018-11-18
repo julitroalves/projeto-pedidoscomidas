@@ -3,6 +3,12 @@
 namespace PedidosComidas\DI;
 
 class Dependencies {
+	public static $container;
+
+	public static function getContainer() {
+		return self::$container;
+	}
+
 	public static function run() {
 		$injector = new Container();
 
@@ -13,6 +19,10 @@ class Dependencies {
 			'PedidosComidas\Template\SimpleTemplate',
 			'PedidosComidas\Template\SimpleTemplateEngine'
 		);
+
+		$injector->set('DBService', 'PedidosComidas\Database\DBService');
+
+		self::$container = $injector;
 
 		return $injector;
 	}
