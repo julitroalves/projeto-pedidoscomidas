@@ -12,14 +12,14 @@ class HomeController {
 
 		$name = $request->query->get('name', 'Julio Alves');
 
-		$productService->create([
-			'title' => 'Baião de dois com queijo',
-			'description' => 'Baião de dois arretado muito gostoso!',
-			'price' => '10',
-			'author' => '1',
-			'created'  => date('Y-m-d H:i:s', time()),
-			'updated'  => date('Y-m-d H:i:s', time())
-		]);
+		// $productService->create([
+		// 	'title' => 'Baião de dois com queijo',
+		// 	'description' => 'Baião de dois arretado muito gostoso!',
+		// 	'price' => '10',
+		// 	'author' => '1',
+		// 	'created'  => date('Y-m-d H:i:s', time()),
+		// 	'updated'  => date('Y-m-d H:i:s', time())
+		// ]);
 		
 		$products = $productService->load();
 

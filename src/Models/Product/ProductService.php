@@ -29,6 +29,17 @@ class ProductService extends AbstractService {
 		return $products;
 	}
 
+	public function findByID($id) {
+		$products = $this->productMapper->findAll(['id' => $id]);
+
+		if (empty($products))
+			return null;
+
+		$products = array_shift($products);
+
+		return $products;
+	}
+
 	public function create(array $data) {
 		$product = new ProductEntity(
 			$data['title'],
