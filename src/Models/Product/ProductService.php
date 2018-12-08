@@ -54,4 +54,21 @@ class ProductService extends AbstractService {
 
 		return $product;
 	}
+
+	public function edit(array $data) {
+		$product = new ProductEntity(
+			$data['title'],
+			$data['description'],
+			$data['author'],
+			$data['price'],
+			$data['created'],
+			$data['updated']
+		);
+
+		$product->id = $data['id'];
+
+		$this->productMapper->update($product);
+
+		return $product;
+	}
 }
