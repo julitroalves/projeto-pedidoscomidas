@@ -95,9 +95,7 @@ class ProductsController {
 			'product' => $product
 		];
 
-		$content = $renderer->render("product.edit.page", $context);
-
-		$response->setContent($content);
+		$response->setContent($renderer->render("product.edit.page", $context));
 
 		return $response->send();
 	}
@@ -107,11 +105,13 @@ class ProductsController {
 
 		$productService = new ProductService();
 
-		$updated = $productService->edit([
+		$productService->edit([
 			'id' => $formData['id'],
 			'title' => $formData['title'],
 			'description' => $formData['description'],
 			'price' => $formData['price'],
 		]);
 	}
+
+	
 }

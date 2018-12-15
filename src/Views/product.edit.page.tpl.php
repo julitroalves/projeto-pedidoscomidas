@@ -17,7 +17,9 @@
 
 			<div>
 				<label>Descrição</label>
-				<textarea name="description"><?= $product->description; ?></textarea>
+				<textarea name="description">
+					<?= $product->description; ?>
+				</textarea>
 			</div>
 
 			<div>
@@ -26,7 +28,7 @@
 			</div>
 
 			<div>
-				<input type="submit" value="Cadastrar">
+				<input type="submit" value="Editar">
 			</div>
 		</form>
 	</div>
