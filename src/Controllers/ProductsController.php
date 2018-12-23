@@ -8,17 +8,22 @@ use PedidosComidas\Models\Product\ProductService;
 
 class ProductsController {
 
+	private $productService;
+
+	public function __construct() {
+		$this->productService = new ProductService();
+	}
+
 	public function index($request, $response, $renderer) {
-		$productService = new ProductService();
 		
-		$products = $productService->load();
+		$products = $this->productService->load();
 
 		$context = [
 			'title' => "Listagem de Produtos",
 			'products' => $products,
 		];
 
-		$content = $renderer->render("products.page", $context);
+		$content = $renderer->render("products/page.list", $context);
 
 		$response->setContent($content);
 
@@ -26,9 +31,8 @@ class ProductsController {
 	}
 	
 	public function getOne($request, $response, $renderer, $params = []) {
-		$productService = new ProductService();
 
-		$product = $productService->findByID($params['{int}']);
+		$product = $this->productService->findByID($params['{int}']);
 
 		if (!$product) {
 			$response->setContent($renderer->render("page.not-found"));
@@ -41,7 +45,7 @@ class ProductsController {
 			'product' => $product,
 		];
 
-		$content = $renderer->render("product.page", $context);
+		$content = $renderer->render("products/page.view", $context);
 
 		$response->setContent($content);
 
@@ -53,7 +57,7 @@ class ProductsController {
 			'title' => 'Criar Produto'
 		];
 
-		$content = $renderer->render('product.create.page', $context);
+		$content = $renderer->render('products/page.create', $context);
 
 		$response->setContent($content);
 
@@ -63,9 +67,8 @@ class ProductsController {
 	public function formCreateSubmit($request, $response, $renderer) {
 		$formData = $request->request->all();
 
-		$productService = new ProductService();
 
-		$productService->create([
+		$this->productService->create([
 			'title' => $formData['title'],
 			'description' => $formData['description'],
 			'price' => $formData['price'],
@@ -80,9 +83,8 @@ class ProductsController {
 	}
 
 	public function formEdit($request, $response, $renderer, $params = []) {
-		$productService = new ProductService();
 
-		$product = $productService->findByID($params['{int}']);
+		$product = $this->productService->findByID($params['{int}']);
 
 		if (!$product) {
 			$response->setContent($renderer->render("page.not-found"));
@@ -95,7 +97,7 @@ class ProductsController {
 			'product' => $product
 		];
 
-		$response->setContent($renderer->render("product.edit.page", $context));
+		$response->setContent($renderer->render("products/page.edit", $context));
 
 		return $response->send();
 	}
@@ -103,9 +105,8 @@ class ProductsController {
 	public function formEditSubmit($request, $response, $renderer, $params = []) {
 		$formData = $request->request->all();
 
-		$productService = new ProductService();
 
-		$product = $productService->findByID($formData['id']);
+		$product = $this->productService->findByID($formData['id']);
 
 		if (!$product) {
 			$response->setContent($renderer->render("page.not-found"));
@@ -113,7 +114,7 @@ class ProductsController {
 			return $response->send();
 		}
 
-		$productUpdated = $productService->edit($product, [
+		$productUpdated = $this->productService->edit($product, [
 			'id' => $formData['id'],
 			'title' => $formData['title'],
 			'description' => $formData['description'],
@@ -135,9 +136,8 @@ class ProductsController {
 	}
 
 	public function formDelete($request, $response, $renderer, $params = []) {
-		$productService = new ProductService();
 
-		$product = $productService->findByID($params['{int}']);
+		$product = $this->productService->findByID($params['{int}']);
 
 		if (!$product) {
 			$response->setContent($renderer->render("page.not-found"));
@@ -150,7 +150,7 @@ class ProductsController {
 			'product' => $product,
 		];
 
-		$response->setContent($renderer->render("product.delete.page", $context));
+		$response->setContent($renderer->render("products/page.delete", $context));
 
 		return $response->send();
 	}
@@ -158,9 +158,8 @@ class ProductsController {
 	public function formDeleteSubmit($request, $response, $renderer, $params = []) {
 		$formData = $request->request->all();
 
-		$productService = new ProductService();
 
-		$product = $productService->findByID($formData['id']);
+		$product = $this->productService->findByID($formData['id']);
 
 		if (!$product) {
 			$response->setContent($renderer->render("page.not-found"));
@@ -168,12 +167,10 @@ class ProductsController {
 			return $response->send();
 		}
 
-		$productService->delete($product);
+		$this->productService->delete($product);
 
 		$response = new RedirectResponse('/');
 
 		return $response->send();
 	}
-
-	
 }
