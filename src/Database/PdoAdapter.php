@@ -175,6 +175,8 @@ class PdoAdapter implements DatabaseInterface {
 			$set = implode(', ', $params['where']);
 		}
 
+		$where = !empty($where) ? " WHERE {$where} " : "";
+
 		$query = "UPDATE {$table} SET {$set} {$where}";
 
 		return $this->prepare($query)

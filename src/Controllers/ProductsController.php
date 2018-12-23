@@ -105,12 +105,74 @@ class ProductsController {
 
 		$productService = new ProductService();
 
-		$productService->edit([
+		$product = $productService->findByID($formData['id']);
+
+		if (!$product) {
+			$response->setContent($renderer->render("page.not-found"));
+
+			return $response->send();
+		}
+
+		$productUpdated = $productService->edit($product, [
 			'id' => $formData['id'],
 			'title' => $formData['title'],
 			'description' => $formData['description'],
 			'price' => $formData['price'],
 		]);
+
+
+		if (!$productUpdated) {
+			$context = ['Infelizmente não foi possível atualizar este produto.'];
+
+			$response->setContent($renderer->render("page.error", $context));
+
+			return $response->send();
+		}
+
+		$response = new RedirectResponse('/');
+		
+		return $response->send();
+	}
+
+	public function formDelete($request, $response, $renderer, $params = []) {
+		$productService = new ProductService();
+
+		$product = $productService->findByID($params['{int}']);
+
+		if (!$product) {
+			$response->setContent($renderer->render("page.not-found"));
+
+			return $response->send();
+		}
+
+		$context = [
+			'title' => 'Deletar Produto',
+			'product' => $product,
+		];
+
+		$response->setContent($renderer->render("product.delete.page", $context));
+
+		return $response->send();
+	}
+
+	public function formDeleteSubmit($request, $response, $renderer, $params = []) {
+		$formData = $request->request->all();
+
+		$productService = new ProductService();
+
+		$product = $productService->findByID($formData['id']);
+
+		if (!$product) {
+			$response->setContent($renderer->render("page.not-found"));
+
+			return $response->send();
+		}
+
+		$productService->delete($product);
+
+		$response = new RedirectResponse('/');
+
+		return $response->send();
 	}
 
 	

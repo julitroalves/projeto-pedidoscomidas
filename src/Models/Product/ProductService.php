@@ -54,4 +54,26 @@ class ProductService extends AbstractService {
 
 		return $product;
 	}
+
+	public function edit(ProductEntity $product, array $data) {
+		$product->title = $data['title'] ?? $product->title;
+
+		$product->description = $data['description'] ?? $product->description;
+
+		$product->price = $data['price'] ?? $product->price;
+
+		$product->updated = date('Y-m-d H:i:s', time());
+
+		$updated = $this->productMapper->update($product);
+
+		if (!$updated) {
+			return FALSE;
+		}
+
+		return $product;
+	}
+
+	public function delete(ProductEntity $product) {
+		return $this->productMapper->delete($product);
+	}
 }
