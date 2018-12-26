@@ -14,7 +14,7 @@ abstract class AbstractDataMapper {
 	}
 
 	public function findById($id) {
-		$row = $this->databaseAdapter->select($this->entityTable, ['id' => $id]);
+		$row = $this->databaseAdapter->select($this->entityTable, ['id' => $id])->fetchAll();
 
 		if (!$row) {
 			return null;

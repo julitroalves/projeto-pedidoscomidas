@@ -1,0 +1,363 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"product",
+				"productService"
+			],
+			[
+				"update",
+				"updated"
+			],
+			[
+				"produ",
+				"product"
+			],
+			[
+				"prod",
+				"product"
+			],
+			[
+				"Produ",
+				"ProductEntity"
+			],
+			[
+				"produc",
+				"productService"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/Controllers/HomeController.php",
+			"settings":
+			{
+				"buffer_size": 1146,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Router/Routes.php",
+			"settings":
+			{
+				"buffer_size": 910,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Views/products/page.edit.tpl.php",
+			"settings":
+			{
+				"buffer_size": 790,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www",
+		"/var/www/src",
+		"/var/www/src/Template",
+		"/var/www/src/Views",
+		"/var/www/src/Views/products"
+	],
+	"file_history":
+	[
+		"/var/www/src/Template/SimpleTemplateEngine.php",
+		"/var/www/src/DI/ContainerInterface.php",
+		"/var/www/src/DI/Container.php",
+		"/var/www/src/DI/Dependencies.php",
+		"/var/www/src/Models/Product/ProductService.php",
+		"/var/www/src/Models/Product/ProductDataMapper.php",
+		"/var/www/src/Controllers/ProductsController.php",
+		"/var/www/src/Router/RouterManager.php",
+		"/var/www/src/Template/SimpleTemplate.php",
+		"/var/www/src/Views/home.index.tpl.php",
+		"/var/www/src/Views/products/page.create.tpl.php",
+		"/var/www/src/Models/AbstractDataMapper.php",
+		"/var/www/src/Models/User/UserService.php",
+		"/var/www/src/Controllers/HomeController.php",
+		"/var/www/src/Views/product.delete.page.tpl.php",
+		"/var/www/src/Database/PdoAdapter.php",
+		"/var/www/README.md",
+		"/var/www/src/Models/Product/ProductEntity.php",
+		"/var/www/src/Views/page.error.tpl.php",
+		"/var/www/src/Views/product.edit.page.tpl.php",
+		"/var/www/src/Models/AbstractService.php",
+		"/var/www/phinx.yml"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"products/page",
+			"product.page",
+			"products.",
+			"productService",
+			"new ProductService();",
+			"$productService = new ProductService();",
+			"Produto",
+			"updated",
+			"price",
+			"description",
+			"title",
+			"description",
+			"title"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/var/www"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/Controllers/HomeController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1146,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/Router/Routes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 910,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5,
+								5
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Views/products/page.edit.tpl.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 790,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								60,
+								60
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"DatabaseADapter",
+				"src/Database/PdoAdapter.php"
+			],
+			[
+				"ProductCtr",
+				"src/Controllers/ProductsController.php"
+			],
+			[
+				"ProductsContr",
+				"src/Controllers/ProductsController.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 349.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -5,6 +5,7 @@ namespace PedidosComidas\Controllers;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 use PedidosComidas\Models\Product\ProductService;
+use PedidosComidas\Models\File\FileService;
 
 class ProductsController {
 
@@ -40,6 +41,9 @@ class ProductsController {
 			return $response->send();
 		}
 
+		$fileService = new FileService([]);
+		$product->cover = $fileService->findByID($product->coverID);
+
 		$context = [
 			'title' => $product->title,
 			'product' => $product,
@@ -67,15 +71,7 @@ class ProductsController {
 	public function formCreateSubmit($request, $response, $renderer) {
 		$formData = $request->request->all();
 
-
-		$this->productService->create([
-			'title' => $formData['title'],
-			'description' => $formData['description'],
-			'price' => $formData['price'],
-			'author' => '1',
-			'created'  => date('Y-m-d H:i:s', time()),
-			'updated'  => NULL
-		]);
+		$this->productService->create($formData);
 
 		$response = new RedirectResponse('/');
 		

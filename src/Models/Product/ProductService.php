@@ -5,6 +5,7 @@ namespace PedidosComidas\Models\Product;
 use PedidosComidas\Models\AbstractService;
 use PedidosComidas\Models\Product\ProductDataMapper;
 use PedidosComidas\Models\Product\ProductEntity;
+use PedidosComidas\Models\File\FileService;
 
 class ProductService extends AbstractService {
 	private $dbService;
@@ -40,7 +41,21 @@ class ProductService extends AbstractService {
 		return $products;
 	}
 
-	public function create(array $data) {
+	public function create(array $formData) {
+		$fileService = new FileService($_FILES);
+
+		$file = $fileService->save('cover');
+
+		$data = [
+			'cover_id' => $file->id,
+			'title' => $formData['title'],
+			'description' => $formData['description'],
+			'price' => $formData['price'],
+			'author' => '1',
+			'created'  => date('Y-m-d H:i:s', time()),
+			'updated'  => NULL
+		];
+
 		$product = new ProductEntity(
 			$data['title'],
 			$data['description'],
@@ -49,6 +64,8 @@ class ProductService extends AbstractService {
 			$data['created'],
 			$data['updated']
 		);
+
+		$product->coverID = $data['cover_id'];
 		
 		$this->productMapper->insert($product);
 

@@ -10,6 +10,7 @@ class ProductEntity {
 	public $price;
 	public $created;
 	public $updated;
+	public $coverID = 0;
 
 	public function __construct($title, $description, $author, $price, $created, $updated) {
 		$this->title = $title;

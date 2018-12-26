@@ -7,7 +7,13 @@
 	<h1><?= $title; ?></h1>
 
 	<div class="container">
-		<form method="POST" accept-charset="utf-8">
+		<form method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+			<div>
+				<label>Capa do Produto</label>
+				<br>
+				<input type="file" name="cover">
+			</div>
+
 			<div>
 				<label>Título: </label>
 				<input type="text" name="title" placeholder="Digite o titulo do seu produto">

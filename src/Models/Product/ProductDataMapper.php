@@ -15,6 +15,7 @@ class ProductDataMapper extends AbstractDataMapper  {
 			'author' => $product->author,
 			'created' => $product->created,
 			'updated' => $product->updated,
+			'cover_id' => $product->coverID,
 		]);
 
 		$product->id = $id;
@@ -46,6 +47,10 @@ class ProductDataMapper extends AbstractDataMapper  {
 			$row['created'],
 			$row['updated']
 		);
+
+		if (isset($row['cover_id'])) {
+			$product->coverID = $row['cover_id'];
+		}
 
 		if (isset($row['id'])) {
 			$product->id = $row['id'];
