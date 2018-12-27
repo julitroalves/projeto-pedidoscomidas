@@ -7,11 +7,13 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use PedidosComidas\Models\Product\ProductService;
 use PedidosComidas\Models\File\FileService;
 
-class ProductsController {
+class ProductsController extends AbstractController {
 
 	private $productService;
 
 	public function __construct() {
+		parent::__construct();
+		
 		$this->productService = new ProductService();
 	}
 

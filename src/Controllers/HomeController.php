@@ -5,26 +5,19 @@ namespace PedidosComidas\Controllers;
 use PedidosComidas\Models\User\UserService;
 use PedidosComidas\Models\Product\ProductService;
 
-class HomeController {
+class HomeController extends AbstractController {
 
 	public function index($request, $response, $renderer) {
+		$sessionStore = $this->injector->get('SessionStore');
+
 		$productService = new ProductService();
 
-		$name = $request->query->get('name', 'Julio Alves');
-
-		// $productService->create([
-		// 	'title' => 'Baião de dois com queijo',
-		// 	'description' => 'Baião de dois arretado muito gostoso!',
-		// 	'price' => '10',
-		// 	'author' => '1',
-		// 	'created'  => date('Y-m-d H:i:s', time()),
-		// 	'updated'  => date('Y-m-d H:i:s', time())
-		// ]);
+		$name = $sessionStore->get('user')['name'] ?? 'Forasteiro';
 		
 		$products = $productService->load();
 
 		$context = [
-			'title' => "Home Dinâmica 100% melhorada!",
+			'title' => "Home",
 			'products' => $products,
 			'name' => $name,
 		];
@@ -38,7 +31,7 @@ class HomeController {
 
 	public function home($request, $response, $renderer) {
 		$context = [
-			'title' => "Home Dinâmica 100% melhorada!"
+			'title' => "Home"
 		];
 
 		$content = $renderer->render("home.index", $context);

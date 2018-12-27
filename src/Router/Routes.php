@@ -4,6 +4,9 @@ $routes = [
 	['GET', '/', 'PedidosComidas\Controllers\HomeController'],
 	['GET', '/home', 'PedidosComidas\Controllers\HomeController::home'],
 
+	['GET', '/user/login', 'PedidosComidas\Controllers\LoginController::formLogin'],
+	['POST', '/user/login', 'PedidosComidas\Controllers\LoginController::formLoginSubmit'],
+
 	['GET', '/products', 'PedidosComidas\Controllers\ProductsController'],
 	['GET', '/products/{int}', 'PedidosComidas\Controllers\ProductsController::getOne'],
 	['GET', '/products/create', 'PedidosComidas\Controllers\ProductsController::formCreate'],

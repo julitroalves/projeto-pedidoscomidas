@@ -22,6 +22,8 @@ class Dependencies {
 
 		$injector->set('DBService', 'PedidosComidas\Database\DBService');
 
+		$injector->set('SessionStore', 'PedidosComidas\Services\Session\Session');
+
 		self::$container = $injector;
 
 		return $injector;
