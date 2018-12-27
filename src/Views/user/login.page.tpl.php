@@ -6,6 +6,10 @@
 <body>
 	<h1><?= $title;?></h1>
 
+	<?php if ($message): ?>
+		<p><?= $message; ?></p>
+	<?php endif; ?>
+
 	<div class="container">
 		<form method="POST" accept-charset="utf-8">			
 			<div>

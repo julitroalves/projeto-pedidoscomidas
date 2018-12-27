@@ -3,13 +3,24 @@
 namespace PedidosComidas\Controllers;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use PedidosComidas\Models\User\UserService;
 
-class LoginController {
+class LoginController extends AbstractController {
 
-	
+	private $userService;
+
+	public function __construct() {
+		parent::__construct();
+
+		$this->userService = new UserService();
+	}
+
 	public function formLogin($request, $response, $renderer, $params = []) {
+		$sessionStore = $this->injector->get('SessionStore');
+
 		$context = [
 			'title' => "Login",
+			'message' => $sessionStore->getFlash('message')
 		];
 
 		$content = $renderer->render("user/login.page", $context);
@@ -20,32 +31,23 @@ class LoginController {
 	}
 
 	public function formLoginSubmit($request, $response, $renderer, $params = []) {
-		$user = [
-			'name' => 'Julio Admin',
-			'username' => 'admin',
-			'password' => 'admin',
-		];
+		$sessionStore = $this->injector->get('SessionStore');
 
 		$formData = $request->request->all();
 
-		if ($formData['username'] !== $user['username']) {
+		try {
+			$userAuthenticated = $this->userService->login($formData);
+	
 			$response = new RedirectResponse('/');
 			
 			return $response->send();
-		}
-
-		if ($formData['password'] !== $user['password']) {
-			$response = new RedirectResponse('/');
-			
-			return $response->send();
-		}
-
-		session_start();
-
-		$_SESSION['user'] = $user;
-
-		$response = new RedirectResponse('/');
+		} catch (\Exception $e) {
+			$sessionStore->setFlash('message', $e->getMessage());
 		
-		return $response->send();
+			$response = new RedirectResponse('/user/login');
+			
+			return $response->send();			
+		}
+
 	}
 }

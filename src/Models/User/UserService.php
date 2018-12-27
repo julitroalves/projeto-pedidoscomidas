@@ -7,21 +7,46 @@ use PedidosComidas\Models\User\UserDataMapper;
 use PedidosComidas\Models\User\UserEntity;
 
 class UserService extends AbstractService {
+		
+	private $sessionStore;
 
-	private $dbService;
-	
-	private $adapter;
+	private $usersMapper;
 
 	public function __construct() {
 		parent::__construct();
 		
-		$this->dbService = $this->injector->get('DBService');
+		$adapter = $this->injector->get('DBService')->getConnection();
 
-		$this->adapter = $this->dbService->getConnection();
+		$this->sessionStore = $this->injector->get('SessionStore');
+		
+		$this->usersMapper = new UserDataMapper($adapter);
+	}
+
+	public function login(array $formData = []) {
+		$user = $this->findByUsername($formData['username']);
+
+		if (!$user)
+			throw new \Exception("Usuário não encontrado.");
+
+		$passwordVerified = password_verify($formData['password'], $user->password);
+
+		if (!$passwordVerified)
+			throw new \Exception("O usuário ou a senha estão incorretos.");
+
+		$this->finalizeLogin($user);
+	}
+
+	public function finalizeLogin(UserEntity $user) {
+		$userData = (array) $user;
+
+		unset($userData['password']);
+
+		$this->sessionStore->set('user', $userData);
+
+		return $user;
 	}
 
 	public function createUser(array $data) {
-		$usersMapper = new UserDataMapper($this->adapter);
 
 		$user = new UserEntity(
 			$data['username'],
@@ -32,17 +57,24 @@ class UserService extends AbstractService {
 			$data['updated']
 		);
 
-		$usersMapper->insert($user);
+		$this->usersMapper->insert($user);
 
 		return $user;
 	}
 
 	public function load(array $parameters = []) {
-		$usersMapper = new UserDataMapper($this->adapter);
+		return $this->usersMapper->findAll($parameters);
+	}
 
-		$users = $usersMapper->findAll($parameters);
+	public function findByUsername(string $username) {
+		$users = $this->load(['username' => $username]);
 
-		return $users;
+		if (empty($users) || sizeof($users) == 0)
+			return null;
+
+		$user = array_shift($users);
+
+		return $user;
 	}
 
 }

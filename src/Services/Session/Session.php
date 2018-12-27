@@ -4,18 +4,18 @@ namespace PedidosComidas\Services\Session;
 
 class Session implements SessionInterface {
 
-	private $initialized = false;
+	static $initialized = false;
 
 	public function __construct() {
 		$this->initialize();
 	}
 
 	public function initialize() {
-		if ($this->initialized) {
+		if (static::$initialized) {
 			return;
 		}
 
-		$this->initialized = true;
+		static::$initialized = true;
 
 		session_start();
 	}
@@ -29,6 +29,15 @@ class Session implements SessionInterface {
 
 		session_write_close();
 	}
+
+	public function has(string $name) {
+		$this->initialize();
+
+		if (!array_key_exists($name, $_SESSION))
+			return false;
+
+		return true;
+	}
 	
 	public function set(string $name, $value) {
 		$this->initialize();
@@ -38,6 +47,9 @@ class Session implements SessionInterface {
 
 	public function get(string $name) {
 		$this->initialize();
+
+		if (!$this->has($name))
+			return false;
 		
 		return $_SESSION[$name];
 	}
@@ -45,7 +57,7 @@ class Session implements SessionInterface {
 	public function delete(string $name) {
 		$this->initialize();
 		
-		if (!array_key_exists($name, $_SESSION))
+		if (!$this->has($name))
 			return false;
 
 		unset($_SESSION[$name]);
