@@ -22,6 +22,18 @@ class UserDataMapper extends AbstractDataMapper {
 		return $id;
 	}
 
+	public function update(UserEntity $user) {
+		$affectedRows = $this->databaseAdapter->update($this->entityTable, [
+			'username' => $user->username,
+			'password' => $user->password,
+			'email' => $user->email,
+			'name' => $user->name,
+			'updated' => date('Y-m-d H:i:s'),
+		], "id = {$user->id}");
+
+		return $affectedRows;
+	}
+
 	protected function createEntity($row) {
 		$user = new UserEntity(
 			$row['username'],

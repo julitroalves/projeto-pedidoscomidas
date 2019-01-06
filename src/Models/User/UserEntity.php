@@ -11,7 +11,7 @@ class UserEntity {
 	public $created;
 	public $updated;
 
-	public function __construct($username, $password, $email, $name, $created, $updated) {
+	public function __construct($username, $password, $email, $name, $created, $updated = null) {
 		$this->username = $username;
 		$this->password = $password;
 		$this->email = $email;

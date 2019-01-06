@@ -18,12 +18,18 @@ class LoginController extends AbstractController {
 	public function formLogin($request, $response, $renderer, $params = []) {
 		$sessionStore = $this->injector->get('SessionStore');
 
+		if ($sessionStore->get('user')) {
+			$response = new RedirectResponse('/');
+
+			return $response->send();
+		}
+
 		$context = [
 			'title' => "Login",
 			'message' => $sessionStore->getFlash('message')
 		];
 
-		$content = $renderer->render("user/login.page", $context);
+		$content = $renderer->render("user/page.login", $context);
 
 		$response->setContent($content);
 
@@ -46,8 +52,19 @@ class LoginController extends AbstractController {
 		
 			$response = new RedirectResponse('/user/login');
 			
-			return $response->send();			
+			return $response->send();
 		}
+	}
 
+	public function logout($request, $response, $renderer, $params = []) {
+		$sessionStore = $this->injector->get('SessionStore');
+
+		$sessionStore->clear();
+
+		$sessionStore->destroy();
+
+		$response = new RedirectResponse('/user/login');
+		
+		return $response->send();
 	}
 }
