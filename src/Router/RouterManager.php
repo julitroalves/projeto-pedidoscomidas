@@ -123,6 +123,8 @@ class RouterManager {
 
 			if ($this->resolveMatchedDynamicValue($routePiece, $pathPieces[$key])) {
 				$resolvedMatchedValues[$routePiece] = $pathPieces[$key];
+			} else {
+				return false;
 			}
 		}
 

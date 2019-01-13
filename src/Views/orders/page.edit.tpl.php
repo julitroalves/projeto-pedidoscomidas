@@ -8,23 +8,11 @@
 
 	<div class="container">
 		<form method="POST" accept-charset="utf-8">
-			<input type="hidden" name="id" value="<?= $product->id; ?>">
+			<input type="hidden" name="id" value="<?= $order->id; ?>">
 			
 			<div>
-				<label>Título: </label>
-				<input type="text" name="title" value="<?= $product->title; ?>" placeholder="Digite o titulo do seu produto">
-			</div>
-
-			<div>
-				<label>Descrição</label>
-				<textarea name="description">
-					<?= $product->description; ?>
-				</textarea>
-			</div>
-
-			<div>
-				<label>Preço: </label>
-				<input type="text" name="price" value="<?= $product->price; ?>" placeholder="Digite o preço do seu produto">
+				<label>Status: </label>
+				<input type="text" name="status" placeholder="Digite o status do pedido">
 			</div>
 
 			<div>

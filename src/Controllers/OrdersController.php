@@ -34,17 +34,17 @@ class OrdersController extends AbstractController {
 	
 	public function getOne($request, $response, $renderer, $params = []) {
 
-		$product = $this->orderService->findByID($params['{int}']);
+		$order = $this->orderService->findByID($params['{int}']);
 
-		if (!$product) {
+		if (!$order) {
 			$response->setContent($renderer->render("page.not-found"));
 
 			return $response->send();
 		}
 
 		$context = [
-			'title' => $product->title,
-			'product' => $product,
+			'title' => "Pedido de N° {$order->id}",
+			'order' => $order,
 		];
 
 		$content = $renderer->render("orders/page.view", $context);
@@ -72,7 +72,7 @@ class OrdersController extends AbstractController {
 
 		$formData = $request->request->all();
 
-		$formData['author'] = $user['id'];
+		$formData['author'] = $user['id'] ?? 0;
 		$this->orderService->create($formData);
 
 		$response = new RedirectResponse('/');
@@ -82,9 +82,9 @@ class OrdersController extends AbstractController {
 
 	public function formEdit($request, $response, $renderer, $params = []) {
 
-		$product = $this->orderService->findByID($params['{int}']);
+		$order = $this->orderService->findByID($params['{int}']);
 
-		if (!$product) {
+		if (!$order) {
 			$response->setContent($renderer->render("page.not-found"));
 
 			return $response->send();
@@ -92,7 +92,7 @@ class OrdersController extends AbstractController {
 
 		$context = [
 			'title' => 'Edição de Produto',
-			'product' => $product
+			'order' => $order
 		];
 
 		$response->setContent($renderer->render("orders/page.edit", $context));
@@ -104,15 +104,15 @@ class OrdersController extends AbstractController {
 		$formData = $request->request->all();
 
 
-		$product = $this->orderService->findByID($formData['id']);
+		$order = $this->orderService->findByID($formData['id']);
 
-		if (!$product) {
+		if (!$order) {
 			$response->setContent($renderer->render("page.not-found"));
 
 			return $response->send();
 		}
 
-		$productUpdated = $this->orderService->edit($product, [
+		$orderUpdated = $this->orderService->edit($order, [
 			'id' => $formData['id'],
 			'title' => $formData['title'],
 			'description' => $formData['description'],
@@ -120,7 +120,7 @@ class OrdersController extends AbstractController {
 		]);
 
 
-		if (!$productUpdated) {
+		if (!$orderUpdated) {
 			$context = ['Infelizmente não foi possível atualizar este produto.'];
 
 			$response->setContent($renderer->render("page.error", $context));
@@ -135,9 +135,9 @@ class OrdersController extends AbstractController {
 
 	public function formDelete($request, $response, $renderer, $params = []) {
 
-		$product = $this->orderService->findByID($params['{int}']);
+		$order = $this->orderService->findByID($params['{int}']);
 
-		if (!$product) {
+		if (!$order) {
 			$response->setContent($renderer->render("page.not-found"));
 
 			return $response->send();
@@ -145,7 +145,7 @@ class OrdersController extends AbstractController {
 
 		$context = [
 			'title' => 'Deletar Produto',
-			'product' => $product,
+			'order' => $order,
 		];
 
 		$response->setContent($renderer->render("orders/page.delete", $context));
@@ -157,15 +157,15 @@ class OrdersController extends AbstractController {
 		$formData = $request->request->all();
 
 
-		$product = $this->orderService->findByID($formData['id']);
+		$order = $this->orderService->findByID($formData['id']);
 
-		if (!$product) {
+		if (!$order) {
 			$response->setContent($renderer->render("page.not-found"));
 
 			return $response->send();
 		}
 
-		$this->orderService->delete($product);
+		$this->orderService->delete($order);
 
 		$response = new RedirectResponse('/');
 

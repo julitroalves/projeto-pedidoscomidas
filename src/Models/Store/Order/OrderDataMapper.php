@@ -37,10 +37,10 @@ class OrderDataMapper extends AbstractDataMapper  {
 
 	protected function createEntity($row) {
 		$order = new OrderEntity(
-			$data['author'],
+			$row['author'],
 			$row['items'] ?? [],
-			$data['created'],
-			$data['updated']
+			$row['created'],
+			$row['updated']
 		);
 
 		if (isset($row['status'])) {
