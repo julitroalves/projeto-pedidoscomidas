@@ -27,6 +27,16 @@ $routes = [
 	['POST', '/products/{int}/edit', 'PedidosComidas\Controllers\ProductsController::formEditSubmit'],
 	['GET', '/products/{int}/delete', 'PedidosComidas\Controllers\ProductsController::formDelete'],
 	['POST', '/products/{int}/delete', 'PedidosComidas\Controllers\ProductsController::formDeleteSubmit'],
+
+	// Orders
+	['GET', '/user/{int}/orders', 'PedidosComidas\Controllers\OrdersController'],
+	['GET', '/user/{int}/orders/create', 'PedidosComidas\Controllers\OrdersController::formCreate'],
+	['POST', '/user/{int}/orders/create', 'PedidosComidas\Controllers\OrdersController::formCreateSubmit'],
+	['GET', '/user/{int}/orders/{int}', 'PedidosComidas\Controllers\OrdersController::getOne'],
+	['GET', '/user/{int}/orders/{int}/edit', 'PedidosComidas\Controllers\OrdersController::formEdit'],
+	['POST', '/user/{int}/orders/{int}/edit', 'PedidosComidas\Controllers\OrdersController::formEditSubmit'],
+	['GET', '/user/{int}/orders/{int}/delete', 'PedidosComidas\Controllers\OrdersController::formDelete'],
+	['POST', '/user/{int}/orders/{int}/delete', 'PedidosComidas\Controllers\OrdersController::formDeleteSubmit'],
 ];
 
 return $routes;

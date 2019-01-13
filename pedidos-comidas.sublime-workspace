@@ -4,12 +4,24 @@
 		"selected_items":
 		[
 			[
-				"passw",
-				"passwordVerified"
+				"curre",
+				"current_password"
 			],
 			[
 				"user",
-				"users"
+				"user"
+			],
+			[
+				"conte",
+				"context"
+			],
+			[
+				"se",
+				"sessionStore"
+			],
+			[
+				"passw",
+				"passwordVerified"
 			],
 			[
 				"User",
@@ -80,37 +92,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/Controllers/LoginController.php",
+			"file": "src/Router/Routes.php",
 			"settings":
 			{
-				"buffer_size": 1195,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Views/user/login.page.tpl.php",
-			"settings":
-			{
-				"buffer_size": 586,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Controllers/HomeController.php",
-			"settings":
-			{
-				"buffer_size": 894,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Models/User/UserService.php",
-			"settings":
-			{
-				"buffer_size": 1664,
+				"buffer_size": 1634,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -155,6 +140,7 @@
 		"/var/www/src/Controllers",
 		"/var/www/src/DI",
 		"/var/www/src/Models",
+		"/var/www/src/Models/Product",
 		"/var/www/src/Models/User",
 		"/var/www/src/Views",
 		"/var/www/src/Views/products",
@@ -162,31 +148,39 @@
 	],
 	"file_history":
 	[
+		"/var/www/src/Controllers/UserController.php",
+		"/var/www/src/Models/User/UserDataMapper.php",
+		"/var/www/src/Views/user/page.edit.tpl.php",
+		"/var/www/src/Controllers/ProductsController.php",
+		"/var/www/src/Controllers/HomeController.php",
+		"/var/www/src/Controllers/LoginController.php",
+		"/var/www/src/Models/Product/ProductService.php",
+		"/var/www/src/Models/Product/ProductDataMapper.php",
+		"/var/www/.gitignore",
+		"/var/www/src/Models/User/UserService.php",
 		"/var/www/src/Services/Session/Session.php",
+		"/var/www/src/Views/user/page.create.tpl.php",
+		"/var/www/src/Views/products/page.edit.tpl.php",
+		"/var/www/src/Views/user/page.view.tpl.php",
+		"/var/www/src/Views/page.not-found.tpl.php",
+		"/var/www/src/Views/page.error.tpl.php",
+		"/var/www/src/Models/AbstractDataMapper.php",
 		"/var/www/src/Models/AbstractService.php",
+		"/var/www/src/Views/products/page.view.tpl.php",
 		"/var/www/src/Models/User/UserEntity.php",
 		"/var/www/db/seeds/UserSeeder.php",
-		"/var/www/db/migrations/20181020140814_users_migration.php",
-		"/var/www/src/Models/User/UserDataMapper.php",
-		"/var/www/src/Models/AbstractDataMapper.php",
-		"/var/www/src/Controllers/AbstractController.php",
-		"/var/www/src/Controllers/HomeController.php",
-		"/var/www/src/Services/Session/SessionInterface.php",
-		"/var/www/src/Application.php",
-		"/var/www/src/Controllers/LoginController.php",
 		"/var/www/src/Views/user/login.page.tpl.php",
 		"/var/www/src/Router/Routes.php",
+		"/var/www/db/migrations/20181020140814_users_migration.php",
+		"/var/www/src/Controllers/AbstractController.php",
+		"/var/www/src/Services/Session/SessionInterface.php",
+		"/var/www/src/Application.php",
 		"/var/www/src/DI/Dependencies.php",
-		"/var/www/src/Controllers/ProductsController.php",
 		"/var/www/src/Bootstrap.php",
 		"/var/www/src/Database/DatabaseInterface.php",
 		"/var/www/src/Database/DBService.php",
-		"/var/www/src/Views/products/page.edit.tpl.php",
 		"/var/www/src/Models/File/FileService.php",
-		"/var/www/src/Models/Product/ProductDataMapper.php",
 		"/var/www/src/Models/File/FileDataMapper.php",
-		"/var/www/src/Models/Product/ProductService.php",
-		"/var/www/src/Views/products/page.view.tpl.php",
 		"/home/julitroalves/Videos/studio/Aula 51 - Upload e Gerenciamento de Arquivos/notas.txt",
 		"/var/www/src/Models/File/FileEntity.php",
 		"/var/www/src/Models/Product/ProductEntity.php",
@@ -196,7 +190,6 @@
 		"/var/www/vendor/symfony/http-foundation/File/UploadedFile.php",
 		"/var/www/src/Views/products/page.create.tpl.php",
 		"/var/www/vendor/symfony/http-foundation/File/File.php",
-		"/var/www/src/Models/User/UserService.php",
 		"/var/www/src/Template/SimpleTemplateEngine.php",
 		"/var/www/src/DI/ContainerInterface.php",
 		"/var/www/src/DI/Container.php",
@@ -206,7 +199,6 @@
 		"/var/www/src/Views/product.delete.page.tpl.php",
 		"/var/www/src/Database/PdoAdapter.php",
 		"/var/www/README.md",
-		"/var/www/src/Views/page.error.tpl.php",
 		"/var/www/src/Views/product.edit.page.tpl.php",
 		"/var/www/phinx.yml"
 	],
@@ -226,6 +218,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Produto",
+			"Produtos",
+			"username",
+			"data",
+			"update",
+			"password2",
+			"password",
+			"current_password",
+			"edit",
+			"username",
+			"create",
+			"login.page",
 			"usersMapper",
 			"findByUsername",
 			"AbstractController",
@@ -294,53 +298,24 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/Controllers/LoginController.php",
+					"file": "src/Router/Routes.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1195,
+						"buffer_size": 1634,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								976,
-								976
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 357.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/Views/user/login.page.tpl.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 586,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								143,
-								143
+								393,
+								393
 							]
 						],
 						"settings":
@@ -350,64 +325,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/Controllers/HomeController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 894,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								304,
-								304
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/Models/User/UserService.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1664,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								694,
-								694
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 272.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -465,6 +382,22 @@
 		"selected_items":
 		[
 			[
+				"Sessio",
+				"src/Services/Session/Session.php"
+			],
+			[
+				"Login",
+				"src/Controllers/LoginController.php"
+			],
+			[
+				"Route",
+				"src/Router/Routes.php"
+			],
+			[
+				"Routes",
+				"src/Router/Routes.php"
+			],
+			[
 				"Session",
 				"src/Services/Session/Session.php"
 			],
@@ -517,7 +450,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 400.0,
+	"side_bar_width": 312.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
