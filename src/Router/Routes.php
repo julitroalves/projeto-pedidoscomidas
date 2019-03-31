@@ -41,6 +41,9 @@ $routes = [
 	['POST', '/user/{int}/orders/{int}/delete', 'PedidosComidas\Controllers\OrdersController::formDeleteSubmit'],
 	
 	['GET', '/user/{int}/orders/{int}/items/{something}/delete', 'PedidosComidas\Controllers\OrdersController::formDeleteOrderLineItemSubmit'],
+
+	['GET', '/cart', 'PedidosComidas\Controllers\CartController'],
+	['POST', '/cart', 'PedidosComidas\Controllers\CartController::formCartSubmit']
 ];
 
 return $routes;

@@ -3,19 +3,27 @@
 namespace PedidosComidas\Models\Store\Order;
 
 class OrderEntity {
+
+	public const ORDER_STATUS_CART = 1;
+	public const ORDER_STATUS_WAITING_PAYMENT = 2;
+	public const ORDER_STATUS_COMPLETED = 3;
+	public const ORDER_STATUS_PAYMENT_APPROVED = 4;
+
 	public $id;
 	public $author;
 	public $items;
 	public $total = 0;
-	public $status = 0;
+	public $status;
 	public $created;
 	public $updated;
 
 	public function __construct($author, $items = [], $created, $updated) {
 		$this->author = $author;
 		$this->items = $items;
+		$this->status = self::ORDER_STATUS_CART;
 		$this->created = $created;
 		$this->updated = $updated;
+
 	}
 
 	public function setStatus($status) {

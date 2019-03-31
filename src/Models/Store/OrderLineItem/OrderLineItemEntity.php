@@ -14,7 +14,7 @@ class OrderLineItemEntity {
 
 	public $productID;
 	
-	public $type = 'product';
+	public $type;
 
 	public $quantity = 1;
 
@@ -22,7 +22,7 @@ class OrderLineItemEntity {
 
 	public $created;
 
-	public function __construct($orderID, $productID, $price = 0, $quantity = 1, $type = 'product') {
+	public function __construct($orderID, $productID, $price = 0, $quantity = 1, $type = PRODUCT_TYPE) {
 		$this->orderID = $orderID;
 
 		$this->productID = $productID;

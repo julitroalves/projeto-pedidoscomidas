@@ -31,6 +31,10 @@ class AbstractController {
 		return $this->getCurrentUser()['id'] ?? 0;
 	}
 
+	public function userIsLoggedIn() {
+		return (boolean) $this->getCurrentUserID();
+	}
+
 	public function setFlashMessage($message) {
 		$this->getSessionStore()->setFlash('message', $message);
 	}
