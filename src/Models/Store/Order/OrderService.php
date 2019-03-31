@@ -57,13 +57,19 @@ class OrderService extends AbstractService {
 		
 		$this->orderMapper->insert($order);
 
+		if (!empty($formData['line_items'])) {
+			$orderLineItems = $this->createLineItems($order, $formData['line_items']);
+
+			$order->setItems($orderLineItems);
+		}
+
 		return $order;
 	}
 
-	public function edit(OrderEntity $order, array $data) {
-		$order->total = $data['total'] ?? $order->total;
+	public function edit(OrderEntity $order, array $formData) {
+		$order->total = $formData['total'] ?? $order->total;
 
-		$order->status = $data['status'] ?? $order->status;
+		$order->status = $formData['status'] ?? $order->status;
 		
 		$order->updated = date('Y-m-d H:i:s', time());
 
@@ -73,10 +79,46 @@ class OrderService extends AbstractService {
 			return FALSE;
 		}
 
+		if (!empty($formData['line_items'])) {
+			$orderLineItems = $this->editLineItems($order, $formData['line_items']);
+
+			$order->setItems($orderLineItems);
+		}
+
 		return $order;
 	}
 
 	public function delete(OrderEntity $order) {
-		return $this->orderMapper->delete($order);
+		$this->orderMapper->delete($order);
+	}
+
+	public function createLineItems($order, array $line_items) {
+		$lineItems = [];
+
+		foreach ($line_items as $line_item) {
+			$line_item['orderID'] = $order->id;
+
+			$lineItemCreatedEntity = $this->orderLineItemService->create($line_item);
+
+			$lineItems[$lineItemCreatedEntity->id] = $lineItemCreatedEntity;
+		}
+
+		return $lineItems;
+	}
+
+	public function editLineItems($order, array $form_line_items) {
+		$lineItems = [];
+
+		foreach ($form_line_items as $line_item) {
+			$lineItem = $order->getItem($line_item['id']);
+
+			$lineItems[$lineItem->id] = $this->orderLineItemService->edit($lineItem, $line_item);
+		}
+
+		return $lineItems;
+	}
+
+	public function deleteLineItem(OrderLineItemEntity $lineItem) {
+		return $this->orderLineItemService->delete($lineItem);
 	}
 }

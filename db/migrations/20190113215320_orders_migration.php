@@ -32,7 +32,7 @@ class OrdersMigration extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('orders');;
+        $table = $this->table('orders');
         $table->addColumn('status', 'integer');
         $table->addColumn('total', 'integer');
         $table->addColumn('author', 'integer');

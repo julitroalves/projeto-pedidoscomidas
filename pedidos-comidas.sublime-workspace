@@ -91,15 +91,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/Router/Routes.php",
-			"settings":
-			{
-				"buffer_size": 1634,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -135,30 +126,46 @@
 	[
 		"/var/www",
 		"/var/www/db",
-		"/var/www/db/seeds",
+		"/var/www/db/migrations",
 		"/var/www/src",
 		"/var/www/src/Controllers",
-		"/var/www/src/DI",
 		"/var/www/src/Models",
-		"/var/www/src/Models/Product",
-		"/var/www/src/Models/User",
+		"/var/www/src/Models/Store",
+		"/var/www/src/Models/Store/Order",
 		"/var/www/src/Views",
-		"/var/www/src/Views/products",
-		"/var/www/src/Views/user"
+		"/var/www/src/Views/orders",
+		"/var/www/src/Views/products"
 	],
 	"file_history":
 	[
+		"/var/www/src/Router/Routes.php",
+		"/var/www/src/Controllers/OrdersController.php",
+		"/var/www/src/Models/Store/Order/OrderDataMapper.php",
+		"/var/www/src/Views/orders/page.view.tpl.php",
+		"/var/www/src/Models/Store/Order/OrderService.php",
+		"/var/www/src/Views/orders/page.delete.tpl.php",
+		"/var/www/src/Views/orders/page.edit.tpl.php",
+		"/var/www/src/Views/orders/page.create.tpl.php",
+		"/var/www/src/Router/RouterManager.php",
+		"/var/www/src/Views/orders/page.list.tpl.php",
 		"/var/www/src/Controllers/UserController.php",
+		"/var/www/src/Controllers/HomeController.php",
+		"/var/www/src/Services/Session/Session.php",
+		"/var/www/db/migrations/20190113215320_orders_migration.php",
+		"/var/www/db/migrations/20190113214227_order_migration.php",
+		"/var/www/db/migrations/20181117144356_product_migration.php",
+		"/var/www/src/Models/Store/Order/OrderEntity.php",
+		"/var/www/db/migrations/20181020140814_users_migration.php",
+		"/var/www/db/migrations/20181226205048_product_cover_field_migration.php",
+		"/var/www/src/Models/Product/ProductService.php",
+		"/var/www/src/Models/Product/ProductEntity.php",
+		"/var/www/src/Models/User/UserService.php",
 		"/var/www/src/Models/User/UserDataMapper.php",
 		"/var/www/src/Views/user/page.edit.tpl.php",
 		"/var/www/src/Controllers/ProductsController.php",
-		"/var/www/src/Controllers/HomeController.php",
 		"/var/www/src/Controllers/LoginController.php",
-		"/var/www/src/Models/Product/ProductService.php",
 		"/var/www/src/Models/Product/ProductDataMapper.php",
 		"/var/www/.gitignore",
-		"/var/www/src/Models/User/UserService.php",
-		"/var/www/src/Services/Session/Session.php",
 		"/var/www/src/Views/user/page.create.tpl.php",
 		"/var/www/src/Views/products/page.edit.tpl.php",
 		"/var/www/src/Views/user/page.view.tpl.php",
@@ -170,8 +177,6 @@
 		"/var/www/src/Models/User/UserEntity.php",
 		"/var/www/db/seeds/UserSeeder.php",
 		"/var/www/src/Views/user/login.page.tpl.php",
-		"/var/www/src/Router/Routes.php",
-		"/var/www/db/migrations/20181020140814_users_migration.php",
 		"/var/www/src/Controllers/AbstractController.php",
 		"/var/www/src/Services/Session/SessionInterface.php",
 		"/var/www/src/Application.php",
@@ -183,9 +188,6 @@
 		"/var/www/src/Models/File/FileDataMapper.php",
 		"/home/julitroalves/Videos/studio/Aula 51 - Upload e Gerenciamento de Arquivos/notas.txt",
 		"/var/www/src/Models/File/FileEntity.php",
-		"/var/www/src/Models/Product/ProductEntity.php",
-		"/var/www/db/migrations/20181117144356_product_migration.php",
-		"/var/www/db/migrations/20181226205048_product_cover_field_migration.php",
 		"/var/www/db/migrations/20181226201525_file_migration.php",
 		"/var/www/vendor/symfony/http-foundation/File/UploadedFile.php",
 		"/var/www/src/Views/products/page.create.tpl.php",
@@ -193,7 +195,6 @@
 		"/var/www/src/Template/SimpleTemplateEngine.php",
 		"/var/www/src/DI/ContainerInterface.php",
 		"/var/www/src/DI/Container.php",
-		"/var/www/src/Router/RouterManager.php",
 		"/var/www/src/Template/SimpleTemplate.php",
 		"/var/www/src/Views/home.index.tpl.php",
 		"/var/www/src/Views/product.delete.page.tpl.php",
@@ -204,13 +205,15 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 26.0
 	},
 	"find_in_files":
 	{
 		"height": 101.0,
 		"where_history":
 		[
+			"src/",
+			"/src"
 		]
 	},
 	"find_state":
@@ -218,6 +221,39 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"product",
+			"data",
+			"var_dump",
+			"page.not-found",
+			"orders/create",
+			"product",
+			"sessionStore",
+			"injector",
+			"page.create",
+			"total",
+			"author",
+			"OrderDataMapper",
+			"OrderEntity",
+			"price",
+			"product",
+			"ProductEntity",
+			"product",
+			"Product",
+			"product",
+			"items",
+			"products",
+			"productMapper",
+			"ProductDataMapper",
+			"FileService",
+			"Product",
+			"products",
+			"productService",
+			"ProductService",
+			"FileService",
+			"ProductsController",
+			"ProductService",
+			"orders",
+			"ProductEntity",
 			"Produto",
 			"Produtos",
 			"username",
@@ -298,38 +334,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/Router/Routes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1634,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								393,
-								393
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -382,6 +388,14 @@
 		"selected_items":
 		[
 			[
+				"router",
+				"src/Router/RouterManager.php"
+			],
+			[
+				"Session",
+				"src/Services/Session/Session.php"
+			],
+			[
 				"Sessio",
 				"src/Services/Session/Session.php"
 			],
@@ -396,10 +410,6 @@
 			[
 				"Routes",
 				"src/Router/Routes.php"
-			],
-			[
-				"Session",
-				"src/Services/Session/Session.php"
 			],
 			[
 				"DbService",
@@ -450,7 +460,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 312.0,
+	"side_bar_width": 327.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

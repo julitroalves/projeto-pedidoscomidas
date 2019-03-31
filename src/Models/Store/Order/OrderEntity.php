@@ -30,6 +30,10 @@ class OrderEntity {
 		$this->items[$item->id] = $item;
 	}
 
+	public function getItem($id) {
+		return $this->items[$id] ?? null;
+	}
+
 	public function setItems(array $items) {
 		$this->items = $items;
 	}
