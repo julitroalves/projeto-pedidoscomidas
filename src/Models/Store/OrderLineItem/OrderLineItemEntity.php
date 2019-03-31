@@ -3,6 +3,11 @@
 namespace PedidosComidas\Models\Store\OrderLineItem;
 
 class OrderLineItemEntity {
+
+	public const PRODUCT_TYPE = 1;
+	public const SHIPPING_TYPE = 2;
+	public const VIRTUAL_PRODUCT_TYPE = 2;
+
 	public $id;
 
 	public $orderID;

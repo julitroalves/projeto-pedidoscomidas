@@ -46,7 +46,7 @@ class OrderLineItemService extends AbstractService {
 			'productID' => $formData['productID'],
 			'price' => $formData['price'],
 			'quantity' => $formData['quantity'],
-			'type' => $formData['type']
+			'type' => $formData['type'] ?? OrderLineItemEntity::PRODUCT_TYPE
 		];
 
 		$lineItem = new OrderLineItemEntity(

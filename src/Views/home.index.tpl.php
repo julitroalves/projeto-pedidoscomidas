@@ -4,6 +4,10 @@
 	<title> <?php echo $title; ?> </title>
 </head>
 <body>
+	<?php if ($message): ?>
+		<p><?= $message; ?></p>
+	<?php endif; ?>
+	
 	<div class="container">
 		<h1><?php echo $title; ?></h1>
 

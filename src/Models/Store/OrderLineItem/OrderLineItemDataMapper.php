@@ -37,8 +37,8 @@ class OrderLineItemDataMapper extends AbstractDataMapper  {
 
 	protected function createEntity($row) {
 		$lineItem = new OrderLineItemEntity(
-			$row['orderID'],
-			$row['productID'],
+			$row['order_id'],
+			$row['product_id'],
 			$row['price'],
 			$row['quantity'],
 			$row['type']

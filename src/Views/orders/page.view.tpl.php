@@ -7,11 +7,24 @@
 	<div class="container">
 		<h1><?php echo $title; ?></h1>
 
-		Author: <?= $order->author; ?>
-		Total: <?= $order->total; ?>
+		<p>Author: <?= $order->author; ?></p>
+		<p>Total: <?= $order->total; ?></p>
 
-		Status: <?= $order->status; ?>		
-		Criando em: <?= $order->created; ?>		
+		<p>Status: <?= $order->status; ?></p>
+		<p>Criando em: <?= $order->created; ?></p>
+
+		<h2>Itens do Pedidos</h2>
+		<ul>
+		<?php foreach($order->items as $item): ?>
+			<li>
+				N° Pedido: <?= $item->getOrderID(); ?> -
+				Product ID: <?= $item->getProductID(); ?> - 
+				Quantidade: <?= $item->getQuantity(); ?>
+				Tipo: <?= $item->getType(); ?>
+				Preço: <?= $item->getPrice(); ?>
+			</li>
+		<?php endforeach; ?>
+		</ul>
 	</div>
 </body>
 </html>

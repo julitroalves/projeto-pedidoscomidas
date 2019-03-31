@@ -8,11 +8,12 @@ use PedidosComidas\Models\Product\ProductService;
 class HomeController extends AbstractController {
 
 	public function index($request, $response, $renderer) {
-		$sessionStore = $this->injector->get('SessionStore');
+		$sessionStore = $this->getSessionStore();
 
 		$productService = new ProductService();
 
-		$name = $sessionStore->get('user')['name'] ?? 'Forasteiro';
+		$user = $this->getCurrentUser();
+		$name = $user['name'] ?? 'Forasteiro';
 		
 		$products = $productService->load();
 
@@ -20,6 +21,7 @@ class HomeController extends AbstractController {
 			'title' => "Home",
 			'products' => $products,
 			'name' => $name,
+			'message' => $this->getFlashMessage(),
 		];
 
 		$content = $renderer->render("home.index", $context);

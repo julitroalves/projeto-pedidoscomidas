@@ -35,7 +35,13 @@ class OrderEntity {
 	}
 
 	public function setItems(array $items) {
-		$this->items = $items;
+		$this->items = [];
+
+		foreach ($items as $item) {
+			$this->items[$item->id] = $item;
+		}
+
+		return $this->items;
 	}
 
 	public function getItems() {

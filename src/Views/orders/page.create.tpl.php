@@ -15,6 +15,21 @@
 			</div>
 
 			<div>
+				<label>Product ID: </label>
+				<input type="text" name="line_items[0][productID]" placeholder="Digite o id do PRODUTO">
+			</div>
+
+			<div>
+				<label>Preço: </label>
+				<input type="text" name="line_items[0][price]" placeholder="Digite o preço">
+			</div>
+
+			<div>
+				<label>Quantidade: </label>
+				<input type="text" name="line_items[0][quantity]" placeholder="Digite a quantidade">
+			</div>
+
+			<div>
 				<input type="submit" value="Cadastrar">
 			</div>
 		</form>

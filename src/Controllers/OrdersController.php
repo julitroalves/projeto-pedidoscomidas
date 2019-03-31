@@ -67,13 +67,15 @@ class OrdersController extends AbstractController {
 	}
 
 	public function formCreateSubmit($request, $response, $renderer) {
-		$sessionStore = $this->injector->get('SessionStore');
-		$user = $sessionStore->get('user');
+		$user = $this->getCurrentUser();
 
 		$formData = $request->request->all();
 
 		$formData['author'] = $user['id'] ?? 0;
+
 		$this->orderService->create($formData);
+
+		$this->setFlashMessage('Pedido criado com sucesso!');
 
 		$response = new RedirectResponse('/');
 		
@@ -91,8 +93,10 @@ class OrdersController extends AbstractController {
 		}
 
 		$context = [
-			'title' => 'Edição de Produto',
-			'order' => $order
+			'title' => 'Edição de Pedido',
+			'order' => $order,
+			'userID'	=> $this->getCurrentUserID(),
+			'message' => $this->getFlashMessage()
 		];
 
 		$response->setContent($renderer->render("orders/page.edit", $context));
@@ -101,8 +105,9 @@ class OrdersController extends AbstractController {
 	}
 
 	public function formEditSubmit($request, $response, $renderer, $params = []) {
-		$formData = $request->request->all();
+		$userID = $this->getCurrentUser()['id'];
 
+		$formData = $request->request->all();
 
 		$order = $this->orderService->findByID($formData['id']);
 
@@ -112,23 +117,19 @@ class OrdersController extends AbstractController {
 			return $response->send();
 		}
 
-		$orderUpdated = $this->orderService->edit($order, [
-			'id' => $formData['id'],
-			'title' => $formData['title'],
-			'description' => $formData['description'],
-			'price' => $formData['price'],
-		]);
-
+		$orderUpdated = $this->orderService->edit($order, $formData);
 
 		if (!$orderUpdated) {
-			$context = ['Infelizmente não foi possível atualizar este produto.'];
+			$context = ['Infelizmente não foi possível atualizar este pedido.'];
 
 			$response->setContent($renderer->render("page.error", $context));
 
 			return $response->send();
 		}
 
-		$response = new RedirectResponse('/');
+		$this->setFlashMessage('O seu pedido foi atualizado com sucesso!');
+
+		$response = new RedirectResponse("/user/{$userID}/orders/{$order->id}/edit");
 		
 		return $response->send();
 	}
@@ -144,7 +145,7 @@ class OrdersController extends AbstractController {
 		}
 
 		$context = [
-			'title' => 'Deletar Produto',
+			'title' => 'Deletar Pedido',
 			'order' => $order,
 		];
 
@@ -155,7 +156,6 @@ class OrdersController extends AbstractController {
 
 	public function formDeleteSubmit($request, $response, $renderer, $params = []) {
 		$formData = $request->request->all();
-
 
 		$order = $this->orderService->findByID($formData['id']);
 
@@ -169,6 +169,35 @@ class OrdersController extends AbstractController {
 
 		$response = new RedirectResponse('/');
 
+		return $response->send();
+	}
+
+	public function formDeleteOrderLineItemSubmit($request, $response, $renderer, $params = []) {
+		$order = $this->orderService->findByID($params['{int}']);
+
+		if (!$order) {
+			$response->setContent($renderer->render("page.not-found"));
+
+			return $response->send();
+		}
+
+
+		$userID = $this->getCurrentUserID();
+
+		// if ($order->author != $userID) {
+		// 	$response->setContent($renderer->render("page.not-found"));
+
+		// 	return $response->send();
+		// }
+
+		$lineItem = $order->getItem($params['{something}']);
+
+		// var_dump($lineItem); die;
+
+		$this->orderService->deleteLineItem($lineItem);
+
+		$response = new RedirectResponse("/user/{$userID}/orders/{$order->id}/edit");
+		
 		return $response->send();
 	}
 }

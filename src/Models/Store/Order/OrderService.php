@@ -5,6 +5,8 @@ namespace PedidosComidas\Models\Store\Order;
 use PedidosComidas\Models\AbstractService;
 use PedidosComidas\Models\Store\Order\OrderDataMapper;
 use PedidosComidas\Models\Store\Order\OrderEntity;
+use PedidosComidas\Models\Store\OrderLineItem\OrderLineItemService;
+use PedidosComidas\Models\Store\OrderLineItem\OrderLineItemEntity;
 
 class OrderService extends AbstractService {
 	private $dbService;
@@ -12,6 +14,8 @@ class OrderService extends AbstractService {
 	private $adapter;
 
 	private $orderMapper;
+
+	private $orderLineItemService;
 
 	public function __construct() {
 		parent::__construct();
@@ -21,6 +25,8 @@ class OrderService extends AbstractService {
 		$this->adapter = $this->dbService->getConnection();
 		
 		$this->orderMapper = new OrderDataMapper($this->adapter);
+
+		$this->orderLineItemService = new OrderLineItemService();
 	}
 
 	public function load(array $parameters = []) {
@@ -30,14 +36,14 @@ class OrderService extends AbstractService {
 	}
 
 	public function findByID($id) {
-		$orders = $this->orderMapper->findAll(['id' => $id]);
+		$order = $this->orderMapper->findByID($id);
 
-		if (empty($orders))
+		if (empty($order))
 			return null;
 
-		$orders = array_shift($orders);
+		$order->setItems($this->orderLineItemService->load(['order_id' => $order->id]));
 
-		return $orders;
+		return $order;
 	}
 
 	public function create(array $formData) {
@@ -67,9 +73,7 @@ class OrderService extends AbstractService {
 	}
 
 	public function edit(OrderEntity $order, array $formData) {
-		$order->total = $formData['total'] ?? $order->total;
-
-		$order->status = $formData['status'] ?? $order->status;
+		$order->status = (int) $formData['status'] ?? $order->status;
 		
 		$order->updated = date('Y-m-d H:i:s', time());
 
@@ -80,9 +84,22 @@ class OrderService extends AbstractService {
 		}
 
 		if (!empty($formData['line_items'])) {
-			$orderLineItems = $this->editLineItems($order, $formData['line_items']);
 
-			$order->setItems($orderLineItems);
+			// var_dump($formData); die;
+
+			$toUpdateLineItems = array_filter($formData['line_items'], function($item) {
+				return isset($item['id']);
+			});
+
+			if (!empty($toUpdateLineItems))
+				$this->editLineItems($order, $toUpdateLineItems);
+
+			$toCreateLineItems = array_filter($formData['line_items'], function($item) {
+				return !isset($item['id']);
+			});
+
+			if (!empty($toCreateLineItems))
+				$this->createLineItems($order, $toCreateLineItems);
 		}
 
 		return $order;
@@ -96,6 +113,8 @@ class OrderService extends AbstractService {
 		$lineItems = [];
 
 		foreach ($line_items as $line_item) {
+			if (empty($line_item['productID'])) continue;
+
 			$line_item['orderID'] = $order->id;
 
 			$lineItemCreatedEntity = $this->orderLineItemService->create($line_item);
@@ -110,6 +129,8 @@ class OrderService extends AbstractService {
 		$lineItems = [];
 
 		foreach ($form_line_items as $line_item) {
+			$line_item = array_filter($line_item);
+
 			$lineItem = $order->getItem($line_item['id']);
 
 			$lineItems[$lineItem->id] = $this->orderLineItemService->edit($lineItem, $line_item);
