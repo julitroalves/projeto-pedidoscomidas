@@ -16,7 +16,7 @@ interface DatabaseInterface {
 
 	public function fetchAll($fetchMode = "", $column = 0);
 
-	public function select($table, array $bind = [], string $boolOperator = 'AND');
+	public function select($table, array $bind = [], string $boolOperator = 'AND', array $orderBy = []);
 
 	public function insert($table, array $bind = []);
 

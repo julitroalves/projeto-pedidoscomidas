@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"orde",
+				"order"
+			],
+			[
+				"ORDER_",
+				"ORDER_STATUS_CART"
+			],
+			[
+				"order",
+				"orderService"
+			],
+			[
+				"orderLine",
+				"orderLineItems"
+			],
+			[
+				"OrderLine",
+				"OrderLineItemService"
+			],
+			[
+				"line",
+				"lineItemCreatedEntity"
+			],
+			[
+				"lin",
+				"lineItems"
+			],
+			[
+				"product",
+				"productID"
+			],
+			[
+				"prod",
+				"productID"
+			],
+			[
 				"curre",
 				"current_password"
 			],
@@ -64,19 +100,11 @@
 				"FileEntity"
 			],
 			[
-				"product",
-				"productService"
-			],
-			[
 				"update",
 				"updated"
 			],
 			[
 				"produ",
-				"product"
-			],
-			[
-				"prod",
 				"product"
 			],
 			[
@@ -91,6 +119,31 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/Controllers/CartController.php",
+			"settings":
+			{
+				"buffer_size": 1116,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Models/Store/Order/OrderService.php",
+			"settings":
+			{
+				"buffer_size": 3403,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Router/Routes.php",
+			"settings":
+			{
+				"buffer_size": 2734,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -103,6 +156,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"setphp",
+				"Set Syntax: PHP"
+			]
 		],
 		"width": 0.0
 	},
@@ -132,57 +189,71 @@
 		"/var/www/src/Models",
 		"/var/www/src/Models/Store",
 		"/var/www/src/Models/Store/Order",
+		"/var/www/src/Models/Store/OrderLineItem",
+		"/var/www/src/Router",
 		"/var/www/src/Views",
-		"/var/www/src/Views/orders",
-		"/var/www/src/Views/products"
+		"/var/www/src/Views/cart"
 	],
 	"file_history":
 	[
+		"/var/www/src/Models/AbstractDataMapper.php",
+		"/var/www/src/Database/DatabaseInterface.php",
+		"/var/www/src/Database/PdoAdapter.php",
+		"/var/www/src/Models/Store/Order/OrderDataMapper.php",
 		"/var/www/src/Router/Routes.php",
 		"/var/www/src/Controllers/OrdersController.php",
-		"/var/www/src/Models/Store/Order/OrderDataMapper.php",
-		"/var/www/src/Views/orders/page.view.tpl.php",
-		"/var/www/src/Models/Store/Order/OrderService.php",
-		"/var/www/src/Views/orders/page.delete.tpl.php",
-		"/var/www/src/Views/orders/page.edit.tpl.php",
-		"/var/www/src/Views/orders/page.create.tpl.php",
-		"/var/www/src/Router/RouterManager.php",
-		"/var/www/src/Views/orders/page.list.tpl.php",
-		"/var/www/src/Controllers/UserController.php",
-		"/var/www/src/Controllers/HomeController.php",
-		"/var/www/src/Services/Session/Session.php",
-		"/var/www/db/migrations/20190113215320_orders_migration.php",
-		"/var/www/db/migrations/20190113214227_order_migration.php",
-		"/var/www/db/migrations/20181117144356_product_migration.php",
+		"/var/www/src/Views/cart/page.list.tpl.php",
+		"/var/www/src/Views/cart/page.empty.tpl.php",
+		"/var/www/src/Views/page.not-authorized.tpl.php",
+		"/var/www/src/Views/page.error.tpl.php",
+		"/var/www/src/Controllers/AbstractController.php",
 		"/var/www/src/Models/Store/Order/OrderEntity.php",
-		"/var/www/db/migrations/20181020140814_users_migration.php",
-		"/var/www/db/migrations/20181226205048_product_cover_field_migration.php",
+		"/var/www/db/migrations/20190113215320_orders_migration.php",
+		"/var/www/src/Views/orders/page.edit.tpl.php",
+		"/var/www/src/Models/Store/OrderLineItem/OrderLineItemEntity.php",
+		"/var/www/src/Models/Store/Order/OrderService.php",
+		"/var/www/src/Views/orders/page.create.tpl.php",
+		"/var/www/src/Template/SimpleTemplateEngine.php",
+		"/var/www/src/Template/SimpleTemplate.php",
+		"/var/www/src/Views/orders/page.delete.tpl.php",
+		"/var/www/src/Template/Renderer.php",
+		"/var/www/src/Models/Store/OrderLineItem/OrderLineItemService.php",
+		"/var/www/src/Views/user/page.edit.tpl.php",
+		"/var/www/src/Views/products/page.view.tpl.php",
+		"/var/www/src/Views/user/page.create.tpl.php",
+		"/var/www/src/Views/user/page.login.tpl.php",
+		"/var/www/src/Views/user/page.view.tpl.php",
+		"/var/www/src/Router/RouterManager.php",
+		"/var/www/src/Views/orders/page.view.tpl.php",
+		"/var/www/src/Models/Store/OrderLineItem/OrderLineItemDataMapper.php",
 		"/var/www/src/Models/Product/ProductService.php",
+		"/var/www/src/Models/AbstractService.php",
+		"/var/www/db/migrations/20190331175504_orders_line_item_migration.php",
+		"/var/www/db/migrations/20181117144356_product_migration.php",
+		"/var/www/src/Controllers/HomeController.php",
+		"/var/www/src/Controllers/ProductsController.php",
+		"/var/www/src/Views/home.index.tpl.php",
+		"/var/www/src/Controllers/UserController.php",
 		"/var/www/src/Models/Product/ProductEntity.php",
+		"/var/www/db/migrations/20181226205048_product_cover_field_migration.php",
+		"/var/www/src/Views/orders/page.list.tpl.php",
+		"/var/www/src/Services/Session/Session.php",
+		"/var/www/db/migrations/20190113214227_order_migration.php",
+		"/var/www/db/migrations/20181020140814_users_migration.php",
 		"/var/www/src/Models/User/UserService.php",
 		"/var/www/src/Models/User/UserDataMapper.php",
-		"/var/www/src/Views/user/page.edit.tpl.php",
-		"/var/www/src/Controllers/ProductsController.php",
 		"/var/www/src/Controllers/LoginController.php",
 		"/var/www/src/Models/Product/ProductDataMapper.php",
 		"/var/www/.gitignore",
-		"/var/www/src/Views/user/page.create.tpl.php",
 		"/var/www/src/Views/products/page.edit.tpl.php",
-		"/var/www/src/Views/user/page.view.tpl.php",
 		"/var/www/src/Views/page.not-found.tpl.php",
-		"/var/www/src/Views/page.error.tpl.php",
-		"/var/www/src/Models/AbstractDataMapper.php",
-		"/var/www/src/Models/AbstractService.php",
-		"/var/www/src/Views/products/page.view.tpl.php",
 		"/var/www/src/Models/User/UserEntity.php",
 		"/var/www/db/seeds/UserSeeder.php",
 		"/var/www/src/Views/user/login.page.tpl.php",
-		"/var/www/src/Controllers/AbstractController.php",
 		"/var/www/src/Services/Session/SessionInterface.php",
 		"/var/www/src/Application.php",
 		"/var/www/src/DI/Dependencies.php",
 		"/var/www/src/Bootstrap.php",
-		"/var/www/src/Database/DatabaseInterface.php",
 		"/var/www/src/Database/DBService.php",
 		"/var/www/src/Models/File/FileService.php",
 		"/var/www/src/Models/File/FileDataMapper.php",
@@ -192,20 +263,16 @@
 		"/var/www/vendor/symfony/http-foundation/File/UploadedFile.php",
 		"/var/www/src/Views/products/page.create.tpl.php",
 		"/var/www/vendor/symfony/http-foundation/File/File.php",
-		"/var/www/src/Template/SimpleTemplateEngine.php",
 		"/var/www/src/DI/ContainerInterface.php",
 		"/var/www/src/DI/Container.php",
-		"/var/www/src/Template/SimpleTemplate.php",
-		"/var/www/src/Views/home.index.tpl.php",
 		"/var/www/src/Views/product.delete.page.tpl.php",
-		"/var/www/src/Database/PdoAdapter.php",
 		"/var/www/README.md",
 		"/var/www/src/Views/product.edit.page.tpl.php",
 		"/var/www/phinx.yml"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -221,6 +288,57 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"order",
+			";\n",
+			"status",
+			"index",
+			"action=\"",
+			"OrderLineItemEntity",
+			"produto",
+			"die",
+			"description",
+			"title",
+			"editLineItems",
+			"setItems",
+			"type",
+			"orderLineItemService",
+			"getSessionStore",
+			"getCurrentUser",
+			"flash",
+			"message",
+			"status",
+			"OrderLineItemEntity",
+			";\n",
+			"getItem",
+			"formData",
+			"productID",
+			"status",
+			"total",
+			"row",
+			"OrderEntity",
+			"createEnt",
+			"order",
+			"orders",
+			"orderLineItemMapper",
+			"orderMapper",
+			"Order",
+			"status",
+			"quantity",
+			"type",
+			"product_id",
+			"productID",
+			"type",
+			"quantity",
+			"orderID",
+			"setOrderID",
+			"ProductID",
+			"OrderID",
+			"orderID",
+			"OrderID",
+			"type",
+			"quantity",
+			"productID",
+			"OrderEntity",
 			"product",
 			"data",
 			"var_dump",
@@ -297,20 +415,7 @@
 			"productService",
 			"name",
 			"getPathname",
-			"n isValid",
-			"products/page",
-			"product.page",
-			"products.",
-			"productService",
-			"new ProductService();",
-			"$productService = new ProductService();",
-			"Produto",
-			"updated",
-			"price",
-			"description",
-			"title",
-			"description",
-			"title"
+			"n isValid"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -334,8 +439,95 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/Controllers/CartController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1116,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1109,
+								1109
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 391.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/Models/Store/Order/OrderService.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								907,
+								907
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 408.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Router/Routes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2734,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2660,
+								2660
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 408.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -387,6 +579,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"route",
+				"src/Router/Routes.php"
+			],
+			[
+				"routeMan",
+				"src/Router/RouterManager.php"
+			],
+			[
+				"routes",
+				"src/Router/Routes.php"
+			],
 			[
 				"router",
 				"src/Router/RouterManager.php"
@@ -460,7 +664,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 327.0,
+	"side_bar_width": 323.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

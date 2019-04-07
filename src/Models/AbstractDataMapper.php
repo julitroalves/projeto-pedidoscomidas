@@ -23,8 +23,10 @@ abstract class AbstractDataMapper {
 		return $this->createEntity($row[0]);
 	}
 
-	public function findAll(array $conditions = []) {
-		$rows = $this->databaseAdapter->select($this->entityTable, $conditions)->fetchAll();
+	public function findAll(array $conditions = [], array $orderBy = []) {
+		$boolOperator = 'AND';
+
+		$rows = $this->databaseAdapter->select($this->entityTable, $conditions, $boolOperator, $orderBy)->fetchAll();
 
 		if (!$rows) {
 			return null;

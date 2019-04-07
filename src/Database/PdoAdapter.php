@@ -139,7 +139,7 @@ class PdoAdapter implements DatabaseInterface {
 		return $params;
 	}
 
-	public function select($table, array $bind = [], string $boolOperator = 'AND')  {
+	public function select($table, array $bind = [], string $boolOperator = 'AND', array $orderBy = [])  {
 		$params = $this->prepareBind($bind);
 
 		$where = "";
@@ -149,7 +149,14 @@ class PdoAdapter implements DatabaseInterface {
 			$where = " WHERE {$wherePieces}";
 		}
 
-		$query = "SELECT * FROM {$table} {$where}";
+		$orderByStr = "";
+		if (!empty($orderBy)) {
+			$orderBy['order'] = $orderBy['order'] ?? 'DESC';
+
+			$orderByStr = "ORDER BY {$orderBy['field']} {$orderBy['order']}";
+		}
+
+		$query = "SELECT * FROM {$table} {$where} {$orderByStr}";
 
 		return $this->prepare($query)->execute($params['bind']);
 	}

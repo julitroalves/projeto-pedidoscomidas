@@ -30,7 +30,11 @@ class OrderService extends AbstractService {
 	}
 
 	public function load(array $parameters = []) {
-		$orders = $this->orderMapper->findAll($parameters);
+		$orders = $this->orderMapper->findAll($parameters, ['field' => 'created']);
+
+		array_walk($orders, function($order) {
+			$order->setItems($this->orderLineItemService->load(['order_id' => $order->id]));
+		});
 
 		return $orders ?? [];
 	}
@@ -49,7 +53,7 @@ class OrderService extends AbstractService {
 	public function create(array $formData) {
 		$data = [
 			'author' => $formData['author'],
-			'status' => $formData['status'] ?? 0,
+			'status' => $formData['status'] ?? OrderEntity::ORDER_STATUS_CART,
 			'created'  => date('Y-m-d H:i:s', time()),
 			'updated'  => NULL
 		];
@@ -73,7 +77,7 @@ class OrderService extends AbstractService {
 	}
 
 	public function edit(OrderEntity $order, array $formData) {
-		$order->status = (int) $formData['status'] ?? $order->status;
+		$order->status = isset($formData['status']) ? (int) $formData['status'] : $order->status;
 		
 		$order->updated = date('Y-m-d H:i:s', time());
 
@@ -84,8 +88,6 @@ class OrderService extends AbstractService {
 		}
 
 		if (!empty($formData['line_items'])) {
-
-			// var_dump($formData); die;
 
 			$toUpdateLineItems = array_filter($formData['line_items'], function($item) {
 				return isset($item['id']);

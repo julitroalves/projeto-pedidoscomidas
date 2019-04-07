@@ -2,8 +2,12 @@
 
 namespace PedidosComidas\Controllers;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 use PedidosComidas\Models\Store\Order\OrderService;
 use PedidosComidas\Models\Store\Order\OrderEntity;
+use PedidosComidas\Models\Cart\CartService;
+use PedidosComidas\Models\Product\ProductService;
 
 class CartController extends AbstractController {
 
@@ -13,6 +17,8 @@ class CartController extends AbstractController {
 		parent::__construct();
 
 		$this->orderService = new OrderService();
+		$this->cartService = new CartService();
+		$this->productService = new ProductService();
 	}
 
 	public function index($request, $response, $renderer, $params = []) {
@@ -23,12 +29,7 @@ class CartController extends AbstractController {
 			return $response->send();
 		}
 
-		$orders = $this->orderService->load([
-			'author' => $this->getCurrentUserID(),
-			'status' => OrderEntity::ORDER_STATUS_CART
-		]);
-
-		$order = array_shift($orders);
+		$order = $this->cartService->getUserOrder($this->getCurrentUserID());
 
 		if (!$order) {
 			$response->setContent($renderer->render("cart/page.empty"));
@@ -38,7 +39,8 @@ class CartController extends AbstractController {
 
 		$context = [
 			'title' => 'Carrinho de Compras',
-			'order' => $order
+			'order' => $order,
+			'userID' => $this->getCurrentUserID(),
 		];
 
 		$content = $renderer->render("cart/page.list", $context);
@@ -48,8 +50,45 @@ class CartController extends AbstractController {
 		return $response->send();
 	}
 
-	public function formCartSubmit($request, $response, $renderer, $params = []) {
-
+	public function formCartToCheckoutSubmit($request, $response, $renderer, $params = []) {
+		
 	}
 
+	public function formCartAddProductSubmit($request, $response, $renderer, $params = []) {
+		$productID = $params['{int}'];
+
+		if (!$this->userIsLoggedIn()) {
+			$response->setContent($renderer->render("page.not-authorized"));
+
+			return $response->send();
+		}
+
+		$product = $this->productService->findByID($params['{int}']);
+
+		if (!$product) {
+			$response->setContent($renderer->render("page.not-authorized"));
+
+			return $response->send();
+		}
+
+		$order = $this->cartService->getUserOrder($this->getCurrentUserID());
+		
+		$linesItems = [
+			['productID' => $productID, 'price' => $product->price, 'quantity' => 1]
+		];
+
+		if (!$order) {
+			$order = $this->cartService->createCartOrder($this->getCurrentUserID(), $linesItems);
+
+			$response = new RedirectResponse('/cart');
+		
+			return $response->send();
+		}
+
+		$order = $this->cartService->updateCartOrder($order, $linesItems);
+
+		$response = new RedirectResponse('/cart');
+		
+		return $response->send();
+	}
 }
