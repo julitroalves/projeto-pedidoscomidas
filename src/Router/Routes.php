@@ -44,7 +44,9 @@ $routes = [
 
 	['GET', '/cart', 'PedidosComidas\Controllers\CartController'],
 	['POST', '/cart', 'PedidosComidas\Controllers\CartController::formCartToCheckoutSubmit'],
-	['POST', '/cart/add/{int}', 'PedidosComidas\Controllers\CartController::formCartAddProductSubmit']
+	['POST', '/cart/add/{int}', 'PedidosComidas\Controllers\CartController::formCartAddProductSubmit'],
+	['GET', '/cart/delete/{int}', 'PedidosComidas\Controllers\CartController::formCartDeleteProductSubmit']
+
 ];
 
 return $routes;

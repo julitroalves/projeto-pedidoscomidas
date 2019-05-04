@@ -91,4 +91,36 @@ class CartController extends AbstractController {
 		
 		return $response->send();
 	}
+
+	public function formCartDeleteProductSubmit($request, $response, $renderer, $params = []) {
+		$productID = $params['{int}'];
+
+		if (!$this->userIsLoggedIn()) {
+			$response->setContent($renderer->render("page.not-authorized"));
+
+			return $response->send();
+		}
+
+		$product = $this->productService->findByID($params['{int}']);
+
+		if (!$product) {
+			$response->setContent($renderer->render("page.not-authorized"));
+
+			return $response->send();
+		}
+
+		$order = $this->cartService->getUserOrder($this->getCurrentUserID());
+
+		if (!$order) {
+			$response = new RedirectResponse('/cart');
+		
+			return $response->send();
+		}
+
+		$order = $this->cartService->deleteItemByProductID($order, [$productID]);
+
+		$response = new RedirectResponse('/cart');
+		
+		return $response->send();
+	}
 }

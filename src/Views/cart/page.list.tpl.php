@@ -36,7 +36,7 @@
 					<input type="text" name="line_items[<?= $item->id; ?>][quantity]" placeholder="Digite a quantidade" value="<?= $item->getQuantity(); ?>">
 				</div>
 
-				<a href="<?= "/user/{$userID}/orders/{$order->id}/items/{$item->id}/delete"; ?>">Deletar Item</a>
+				<a href="<?= "/cart/delete/{$item->getProductID()}"; ?>">Deletar Item</a>
 			
 			<hr>
 			<?php endforeach; ?>

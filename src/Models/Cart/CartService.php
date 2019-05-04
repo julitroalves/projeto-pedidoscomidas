@@ -41,4 +41,14 @@ class CartService extends AbstractService {
 	public function updateCartOrder(OrderEntity $order, array $lineItems) {
 		return $this->orderService->edit($order, ['line_items' => $lineItems]);
 	}
+
+	public function deleteItemByProductID(OrderEntity $order, array $productIDS) {
+		$lineItems = $order->getItems();
+
+		foreach ($lineItems as $key => $lineItem) {
+			if (in_array($lineItem->getProductID(), $productIDS)) {
+				$this->orderService->deleteLineItem($lineItem);
+			}
+		}
+	}
 }

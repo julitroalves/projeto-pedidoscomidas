@@ -184,15 +184,13 @@ class OrdersController extends AbstractController {
 
 		$userID = $this->getCurrentUserID();
 
-		// if ($order->author != $userID) {
-		// 	$response->setContent($renderer->render("page.not-found"));
+		if ($order->author != $userID) {
+			$response->setContent($renderer->render("page.not-found"));
 
-		// 	return $response->send();
-		// }
+			return $response->send();
+		}
 
 		$lineItem = $order->getItem($params['{something}']);
-
-		// var_dump($lineItem); die;
 
 		$this->orderService->deleteLineItem($lineItem);
 
