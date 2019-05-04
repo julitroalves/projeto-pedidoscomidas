@@ -43,7 +43,7 @@
 
 
 			<div>
-				<input type="submit" value="Ir para o Pagamento">
+				<a href="/checkout/payment">Ir para o pagamento</a>
 			</div>
 		</form>
 	</div>

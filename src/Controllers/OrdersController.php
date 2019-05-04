@@ -181,7 +181,6 @@ class OrdersController extends AbstractController {
 			return $response->send();
 		}
 
-
 		$userID = $this->getCurrentUserID();
 
 		if ($order->author != $userID) {
