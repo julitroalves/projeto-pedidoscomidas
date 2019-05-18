@@ -32,6 +32,10 @@ class OrderService extends AbstractService {
 	public function load(array $parameters = []) {
 		$orders = $this->orderMapper->findAll($parameters, ['field' => 'created']);
 
+		if (empty($orders)) {
+			return [];
+		}
+
 		array_walk($orders, function($order) {
 			$order->setItems($this->orderLineItemService->load(['order_id' => $order->id]));
 		});

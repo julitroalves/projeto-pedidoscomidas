@@ -27,6 +27,8 @@ class DepositPayment extends PaymentAbstract implements PaymentInterface {
 	}
 
 	public function process($dataForm) {
-		return true;
+		return [
+			'status' => false,
+		];
 	}
 }

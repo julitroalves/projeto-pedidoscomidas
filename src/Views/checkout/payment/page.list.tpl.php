@@ -6,6 +6,10 @@
 <body>
 	<h1><?= $title; ?></h1>
 
+	<?php if ($message): ?>
+		<p><?= $message; ?></p>
+	<?php endif; ?>
+
 	<div class="container">
 
 		<form method="POST" accept-charset="utf-8">
@@ -25,7 +29,10 @@
 			<h4>Total: <?= $order->total; ?></h4>
 
 			<?php foreach($payments as $payment): ?>
-				<h4><?= $payment; ?></h4>
+				<input type="radio" name="payment_method" value="<?= $payment->getID(); ?>" id="<?= $payment->getID(); ?>">
+
+				<label for="<?= $payment->getID(); ?>"><?= $payment->getTitle(); ?></label>
+
 				<p><?= $payment->getDescription(); ?></p>
 
 				<div>
@@ -34,7 +41,7 @@
 			<?php endforeach;?>
 
 			<div>
-				<a href="/checkout/completed">Realizar Pagamento</a>
+				<input type="submit" name="todoPayment" value="Realizar Pagamento">
 			</div>
 		</form>
 	</div>

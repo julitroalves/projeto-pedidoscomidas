@@ -20,6 +20,8 @@ class BilletPayment extends PaymentAbstract implements PaymentInterface {
 	}
 
 	public function process($dataForm) {
-		return true;
+		return [
+			'status' => true,
+		];
 	}
 }

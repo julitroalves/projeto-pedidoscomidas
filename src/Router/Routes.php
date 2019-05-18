@@ -49,6 +49,8 @@ $routes = [
 	['GET', '/cart/delete/{int}', 'PedidosComidas\Controllers\CartController::formCartDeleteProductSubmit'],
 
 	['GET', '/checkout/payment', 'PedidosComidas\Controllers\CheckoutController::formPayment'],
+	['POST', '/checkout/payment', 'PedidosComidas\Controllers\CheckoutController::formPaymentSubmit'],
+	['GET', '/checkout/completed/{int}', 'PedidosComidas\Controllers\CheckoutController::completedPage'],
 
 
 ];

@@ -17,15 +17,26 @@ class CreditCardPayment extends PaymentAbstract implements PaymentInterface {
 
 	public function buildForm() {
 		return '
-		<form method="POST" accept-charset="utf-8">
 			<div>
 				<label>Número do Cartão</label>
-				<input type="text" name="card_number"/>
+				<input type="text" name="form_credit_card[card_number]"/>
 			</div>
-		</form>';
+
+			<div>
+				<label>Data de Validade do Cartão</label>
+				<input type="text" name="form_credit_card[card_date]"/>
+			</div>
+
+			<div>
+				<label>Código de Segurança</label>
+				<input type="text" name="form_credit_card[card_secure_code]"/>
+			</div>
+		';
 	}
 
 	public function process($dataForm) {
-		return true;
+		return [
+			'status' => false,
+		];
 	}
 }

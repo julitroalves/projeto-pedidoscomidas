@@ -17,4 +17,8 @@ class PaymentService extends AbstractService {
 	public function load() {
 		return $this->paymentManager->load();
 	}
+
+	public function process(string $paymentID, array $data = []) {
+		return $this->paymentManager->process($paymentID, $data);
+	}
 }

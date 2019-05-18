@@ -37,18 +37,91 @@ class CheckoutController extends AbstractController {
 		}
 
 		$payments = $this->paymentService->load();
-		var_dump($payments);
 		
 		$context = [
 			'title' => 'Pagamento',
 			'order' => $order,
-			'payments' => $payments
+			'payments' => $payments,
+			'message' => $this->getFlashMessage(),
 		];
 
 		$content = $renderer->render("checkout/payment/page.list", $context);
 
 		$response->setContent($content);
 		
+		return $response->send();
+	}
+	
+	public function formPaymentSubmit($request, $response, $renderer, $params = []) {
+		if (!$this->userIsLoggedIn()) {
+			$response->setContent($renderer->render("page.not-authorized"));
+
+			return $response->send();
+		}
+
+		$order = $this->cartService->getUserOrder($this->getCurrentUserID());
+
+		if (!$order) {
+			$response->setContent($renderer->render("cart/page.empty"));
+
+			return $response->send();
+		}
+
+		$formData = $request->request->all();
+
+		$paymentID = $formData['payment_method'];
+		$formPaymentID = "form_{$paymentID}";
+		$paymentData = isset($formData[$formPaymentID]) ? $formData[$formPaymentID] : [];
+
+		$paymentProcessResponse = $this->paymentService->process($formData['payment_method'], $paymentData);
+
+		if (false === $paymentProcessResponse) {
+			$this->setFlashMessage('O pagamento não existe.');
+
+			$response = new RedirectResponse('/checkout/payment');
+
+			return $response->send();
+		}
+
+		if (false === $paymentProcessResponse['status']) {
+			$this->setFlashMessage('Infelizmente o seu pagamento foi rejeitado.');
+
+			$response = new RedirectResponse('/checkout/payment');
+
+			return $response->send();
+		}
+
+		$this->orderService->edit($order, ['status' => OrderEntity::ORDER_STATUS_COMPLETED]);
+
+		$response = new RedirectResponse('/checkout/completed/' . $order->id);
+
+		return $response->send();
+	}
+
+	public function completedPage($request, $response, $renderer, $params = []) {
+		if (!$this->userIsLoggedIn()) {
+			$response->setContent($renderer->render("page.not-authorized"));
+
+			return $response->send();
+		}
+
+		$order = $this->orderService->findByID($params['{int}']);
+
+		if (!$order) {
+			$response->setContent($renderer->render("page.not-found"));
+
+			return $response->send();
+		}
+
+		$context = [
+			'title' => "Parabéns, seu pedido N° {$order->id} foi finalizado com sucesso!",
+			'order' => $order,
+		];
+
+		$content = $renderer->render("orders/page.view", $context);
+
+		$response->setContent($content);
+
 		return $response->send();
 	}
 	

@@ -31,4 +31,12 @@ class PaymentManager extends AbstractService {
 	public function add(PaymentInterface $payment) {
 		$this->payments[$payment->getID()] = $payment;
 	}
+
+	public function process(string $paymentID, array $data = []) {
+		if (!isset($this->payments[$paymentID])) {
+			return false;
+		}
+
+		return $this->payments[$paymentID]->process($data);
+	}
 }
