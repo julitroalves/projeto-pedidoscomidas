@@ -15,10 +15,7 @@ class Dependencies {
 		$injector->set('Symfony\Component\HttpFoundation\Request');
 		$injector->set('Symfony\Component\HttpFoundation\Response');
 
-		$injector->set(
-			'PedidosComidas\Template\SimpleTemplate',
-			'PedidosComidas\Template\SimpleTemplateEngine'
-		);
+		$injector->set('TemplateRenderer', 'PedidosComidas\Template\SimpleTemplate');
 
 		$injector->set('DBService', 'PedidosComidas\Database\DBService');
 

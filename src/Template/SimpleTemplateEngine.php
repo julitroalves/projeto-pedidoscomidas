@@ -9,10 +9,14 @@ class SimpleTemplateEngine {
 		$this->baseDir = dirname(__DIR__);
 	}
 
-	public function render($template, $context = []) {
+	public function render(string $template, array $context = [], bool $isRequired = true) {
 		$templatePath = $this->baseDir . '/Views/' . $template . '.tpl.php';
 
 		if (!is_readable($templatePath)) {
+			if (!$isRequired) {
+				return;
+			}
+
 			$message = "The template {$templatePath} file not found or is not possible to read.";
 			
 			throw new \Exception($message);
