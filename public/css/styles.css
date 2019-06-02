@@ -1,0 +1,13 @@
+.price-container {
+	display: inline-block;
+	margin-left: 60px;
+}
+
+.price-symbol {
+	font-weight: 700;
+	font-size: 20px
+}
+
+.price-value {
+	font-size: 40px
+}

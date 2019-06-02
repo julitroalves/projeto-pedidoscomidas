@@ -21,6 +21,7 @@ class HomeController extends AbstractController {
 			'title' => "Home",
 			'products' => $products,
 			'name' => $name,
+			'user' => $user,
 			'message' => $this->getFlashMessage(),
 		];
 

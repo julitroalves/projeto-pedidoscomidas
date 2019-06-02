@@ -43,9 +43,6 @@ class ProductsController extends AbstractController {
 			return $response->send();
 		}
 
-		$fileService = new FileService([]);
-		$product->cover = $fileService->findByID($product->coverID);
-
 		$context = [
 			'title' => $product->title,
 			'product' => $product,

@@ -12,6 +12,7 @@ $routes = [
 	['GET', '/user/logout', 'PedidosComidas\Controllers\LoginController::logout'],
 
 	// Users
+	['GET', '/user/register', 'PedidosComidas\Controllers\UserController::formCreate'],
 	['GET', '/user/create', 'PedidosComidas\Controllers\UserController::formCreate'],
 	['POST', '/user/create', 'PedidosComidas\Controllers\UserController::formCreateSubmit'],
 	['GET', '/user/{int}', 'PedidosComidas\Controllers\UserController::getOne'],

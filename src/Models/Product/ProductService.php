@@ -27,18 +27,27 @@ class ProductService extends AbstractService {
 	public function load(array $parameters = []) {
 		$products = $this->productMapper->findAll($parameters);
 
+		if (empty($products))
+			return [];
+
+		$fileService = new FileService([]);
+		array_walk($products, function($product) use ($fileService) {
+			$product->cover = $fileService->findByID($product->coverID);
+		});
+
 		return $products;
 	}
 
 	public function findByID($id) {
-		$products = $this->productMapper->findAll(['id' => $id]);
+		$product = $this->productMapper->findById($id);
 
-		if (empty($products))
+		if (empty($product))
 			return null;
 
-		$products = array_shift($products);
+		$fileService = new FileService([]);
+		$product->cover = $fileService->findByID($product->coverID);
 
-		return $products;
+		return $product;
 	}
 
 	public function create(array $formData) {
