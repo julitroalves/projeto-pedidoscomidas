@@ -1,51 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title><?= $title; ?></title>
-</head>
-<body>
-	<h1><?= $title; ?></h1>
+<div class="container">
 
-	<div class="container">
-		<p>Author: <?= $order->author; ?></p>
-		<p>Total: <?= $order->total; ?></p>
 
-		<p>Status: <?= $order->status; ?></p>
+	<form method="POST" accept-charset="utf-8" class="mt-2">
+		<h1>Carrinho de Compras</h1>
 
-		<form method="POST" accept-charset="utf-8">
-			<input type="hidden" name="id" value="<?= $order->id; ?>">
+		<input type="hidden" name="id" value="<?= $order->id; ?>">
 
-			<h2>Itens do Pedidos</h2>
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">Nome</th>
+		      <th scope="col">Tipo</th>
+		      <th scope="col">Preço</th>
+		      <th scope="col">Quantidade</th>
+		      <th scope="col">Ação</th>
+		    </tr>
+		  </thead>
 
-			<?php foreach($order->items as $item): ?>
-				<div>
-					<p>Product ID: <?= $item->getProductID(); ?></p>
-					<p>Tipo: <?= $item->getType(); ?></p>
-				</div>
+		  <tbody>
 
+		<?php foreach($order->items as $item): ?>
+		    <tr>
+		      <td>
+		      	<?= $item->getProduct()->title; ?>
+				
 				<input type="hidden" name="line_items[<?= $item->id; ?>][id]" value="<?= $item->id; ?>">
 				<input type="hidden" name="line_items[<?= $item->id; ?>][productID]" value="<?= $item->getProductID(); ?>">
+		      </td>
 
-				<div>
-					<label>Preço: </label>
-					<input type="text" name="line_items[<?= $item->id; ?>][price]" placeholder="Digite o preço" value="<?= $item->getPrice(); ?>" disabled>
-				</div>
+		      <td>
+		      	<?= $item->getTypeLabel(); ?>
+		      </td>
 
-				<div>
-					<label>Quantidade: </label>
-					<input type="text" name="line_items[<?= $item->id; ?>][quantity]" placeholder="Digite a quantidade" value="<?= $item->getQuantity(); ?>">
-				</div>
+		      <td>
+					<input type="text" name="line_items[<?= $item->id; ?>][price]" placeholder="Digite o preço" value="<?= $item->getPrice(); ?>" disabled class="form-control">
+		      </td>
 
-				<a href="<?= "/cart/delete/{$item->getProductID()}"; ?>">Deletar Item</a>
-			
-			<hr>
-			<?php endforeach; ?>
+		      <td>
+					<input type="text" name="line_items[<?= $item->id; ?>][quantity]" placeholder="Digite a quantidade" value="<?= $item->getQuantity(); ?>" class="form-control">
+		      </td>
 
+		      <td>
+				<a href="<?= "/cart/delete/{$item->getProductID()}"; ?>">Apagar</a>
+		      </td>
+		    </tr>
+		<?php endforeach; ?>
+		  </tbody>
+		</table>
 
-			<div>
-				<a href="/checkout/payment">Ir para o pagamento</a>
-			</div>
-		</form>
-	</div>
-</body>
-</html>
+		<h4>Total: <?= $order->total; ?></h4>
+
+		<div class="text-right">
+			<a class="btn btn-primary" href="/checkout/payment">Ir para o pagamento</a>
+		</div>
+	</form>
+</div>

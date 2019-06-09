@@ -14,6 +14,8 @@ class OrderLineItemEntity {
 
 	public $productID;
 	
+	public $product;
+	
 	public $type;
 
 	public $quantity = 1;
@@ -52,6 +54,14 @@ class OrderLineItemEntity {
 		return $this->productID;
 	}
 
+	public function setProduct($product) {
+		$this->product = $product;
+	}
+
+	public function getProduct() {
+		return $this->product;
+	}
+
 	public function setQuantity(int $qtd) {
 		$this->quantity = $qtd;
 	}
@@ -66,6 +76,28 @@ class OrderLineItemEntity {
 
 	public function getType() {
 		return $this->type;
+	}
+
+	public function getTypeLabel() {
+		$type = $this->getType();
+
+		$label = '';
+
+		switch ($type) {
+			case self::SHIPPING_TYPE:
+				$label = 'Frete';
+				break;
+
+			case self::VIRTUAL_PRODUCT_TYPE:
+				$label = 'Produto Virtual';
+				break;
+			
+			default:
+				$label = 'Produto';
+				break;
+		}
+
+		return $label;
 	}
 
 	public function setPrice(int $price) {

@@ -5,6 +5,8 @@ namespace PedidosComidas\Models\Store\OrderLineItem;
 use PedidosComidas\Models\AbstractService;
 use PedidosComidas\Models\Store\OrderLineItem\OrderLineItemDataMapper;
 use PedidosComidas\Models\Store\OrderLineItem\OrderLineItemEntity;
+use PedidosComidas\Models\Product\ProductService;
+
 
 class OrderLineItemService extends AbstractService {
 	private $dbService;
@@ -21,10 +23,23 @@ class OrderLineItemService extends AbstractService {
 		$this->adapter = $this->dbService->getConnection();
 		
 		$this->orderLineItemMapper = new OrderLineItemDataMapper($this->adapter);
+
+		$this->productService = new ProductService();
 	}
 
 	public function load(array $parameters = []) {
 		$lineItems = $this->orderLineItemMapper->findAll($parameters);
+
+		if (empty($lineItems))
+			return [];
+
+		array_walk($lineItems, function($item) {
+			$productID = $item->getProductID();
+
+			$product = $this->productService->findByID($productID);
+
+			$item->setProduct($product);
+		});
 
 		return $lineItems ?? [];
 	}
