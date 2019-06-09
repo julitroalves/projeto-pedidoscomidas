@@ -16,8 +16,10 @@ class SimpleTemplate implements Renderer {
 		$this->injector = Dependencies::getContainer();
 	}
 
-	public function render($template, $context) {
+	public function render(string $template, array $context = []) {
 		$user = $this->injector->get('SessionStore')->get('user');
+
+		$context['title'] = isset($context['title']) ? $context['title'] : '';
 
 		if ($user) {
 			$context['logged_user'] = $user;

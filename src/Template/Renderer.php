@@ -3,5 +3,5 @@
 namespace PedidosComidas\Template;
 
 interface Renderer {
-	public function render($template, $context);
+	public function render(string $template, array $context);
 }
