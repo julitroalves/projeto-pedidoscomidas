@@ -2,7 +2,9 @@
 
 namespace PedidosComidas\Models\File;
 
-class FileEntity {
+use PedidosComidas\Models\AbstractEntity;
+
+class FileEntity extends AbstractEntity {
 	public $id;
 	public $name;
 	public $uri;
@@ -14,6 +16,6 @@ class FileEntity {
 
 
 	public function getUrl() {
-		return 'http://' . $_SERVER['SERVER_NAME'] . '/files/' . $this->name;
+		return $this->getBaseUrl() . '/files/' . $this->name;
 	}
 }

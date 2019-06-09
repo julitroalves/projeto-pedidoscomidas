@@ -14,6 +14,15 @@ class CartService extends AbstractService {
 		$this->orderService = new OrderService();
 	}
 
+	public function getCartItemsQuantity(int $userID) {
+		$order = $this->getUserOrder($userID);
+
+		if (empty($order))
+			return 0;
+
+		return count($order->getItems());
+	}
+
 	public function getUserOrder(int $userID) {
 		$orders = $this->orderService->load([
 			'author' => $userID,

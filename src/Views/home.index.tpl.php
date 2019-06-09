@@ -8,18 +8,22 @@
 				<div class="col">
 					<div class="card" style="width: 18rem; margin: 5px">
 						
-						<?php if (isset($product->cover)): ?>
-							<img src="<?= $product->cover->getUrl(); ?>" class="card-img-top">
-						<?php else: ?>
-							<img src="/images/default-product-image.png" class="card-img-top">
-						<?php endif ; ?>
+						<a href="<?= $product->getUrl(); ?>">
+							<?php if (isset($product->cover)): ?>
+								<img width="300" height="300" src="<?= $product->cover->getUrl(); ?>" class="card-img-top">
+							<?php else: ?>
+								<img width="300" height="300" src="/images/default-product-image.png" class="card-img-top">
+							<?php endif ; ?>
+						</a>
 
 					  <div class="card-body">
-					    <h5 class="card-title"><?= $product->title; ?></h5>
+					  	<a href="<?= $product->getUrl(); ?>">
+					    	<h5 class="card-title"><?= $product->title; ?></h5>
+						</a>
 
 					    <p class="card-text"><?= $product->description; ?></p>
 
-						<form method="POST" accept-charset="utf-8" action="/cart/add/<?= $product->id; ?>" >
+						<form method="POST" accept-charset="utf-8" action="/cart/add/<?= $product->id; ?>" class="form-add-to-cart">
 							<input type="submit" class="btn btn-primary" name="add-to-cart" value="Comprar">
 						</form>
 

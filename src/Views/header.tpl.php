@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="/images/hamburger.svg" width="30" height="30" alt="">
+    <img src="/images/hamburger.svg" width="50" height="50" alt="">
   </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +19,7 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
 
-    <?php if (!isset($user) || !$user): ?>
+    <?php if (!isset($logged_user) || !$logged_user): ?>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="/user/login">Entrar</a>
@@ -31,8 +31,22 @@
       </ul>
     <?php endif; ?>
 
-    <?php if (isset($user) && $user): ?>
+    <?php if (isset($logged_user) && $logged_user): ?>
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/cart">
+            <i class="fas fa-cart-plus"></i> Carrinho 
+            
+
+            <span class="badge badge-success"><?= $cart_items_quantity; ?></span>
+
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/user/<?= $logged_user['id']; ?>">Minha Conta</a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="/user/logout">Sair</a>
         </li>

@@ -2,7 +2,9 @@
 
 namespace PedidosComidas\Models\Product;
 
-class ProductEntity {
+use PedidosComidas\Models\AbstractEntity;
+
+class ProductEntity extends AbstractEntity {
 	public $id;
 	public $title;
 	public $description;
@@ -19,5 +21,9 @@ class ProductEntity {
 		$this->price = $price;
 		$this->created = $created;
 		$this->updated = $updated;
+	}
+
+	public function getUrl() {
+		return $this->getBaseUrl() . '/products/' . $this->id;
 	}
 }
