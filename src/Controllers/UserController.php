@@ -4,15 +4,19 @@ namespace PedidosComidas\Controllers;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use PedidosComidas\Models\User\UserService;
+use PedidosComidas\Models\Store\Order\OrderService;
 
 class UserController extends AbstractController {
 
 	private $userService;
+	private $orderService;
 
 	public function __construct() {
 		parent::__construct();
 
 		$this->userService = new UserService();
+
+		$this->orderService = new OrderService();
 	}
 
 	public function formCreate($request, $response, $renderer, $params = []) {
@@ -59,9 +63,12 @@ class UserController extends AbstractController {
 			return $response->send();
 		}
 
+		$orders = $this->orderService->load(['author' => $this->getCurrentUserID()]);
+
 		$context = [
 			'title' => "Perfil do Usuário {$user->username}",
-			'user' => $user
+			'user' => $user,
+			'orders' => $orders
 		];
 
 		$content = $renderer->render("user/page.view", $context);

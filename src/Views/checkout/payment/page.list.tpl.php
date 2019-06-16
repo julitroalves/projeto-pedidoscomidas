@@ -1,49 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title><?= $title; ?></title>
-</head>
-<body>
-	<h1><?= $title; ?></h1>
+<div class="container">
 
-	<?php if ($message): ?>
-		<p><?= $message; ?></p>
-	<?php endif; ?>
+	<form method="POST" accept-charset="utf-8" class="row my-5">
+		<input type="hidden" name="id" value="<?= $order->id; ?>">
 
-	<div class="container">
+		
+		<div class="col-md-4 order-2">
 
-		<form method="POST" accept-charset="utf-8">
-			<input type="hidden" name="id" value="<?= $order->id; ?>">
+			<h4 class="d-flex justify-content-between align-items-center mb-3">
+		    	<span class="text-muted">Carrinho</span>
+		    	<span class="badge badge-secondary badge-pill"><?= $cart_items_quantity; ?></span>
+		    </h4>
+				
+			<ul class="list-group mb-3">
 
-			<h2>Resumo do Pedido</h2>
-
-			<?php foreach($order->items as $item): ?>
-				<div>
-					<p>Product ID: <?= $item->getProductID(); ?></p>
-					<p>Preço: <?= $item->getPrice(); ?></p>					
-					<p>Quantidade: <?= $item->getQuantity(); ?></p>
-				</div>
-			<hr>
-			<?php endforeach; ?>
+				<?php foreach($order->items as $item): ?>
+					<li class="list-group-item d-flex justify-content-between lh-condensed">
+			          <div>
+			            <h6 class="my-0"><?= $item->getProduct()->title; ?> X <?= $item->getQuantity(); ?></h6>
+			            <small class="text-muted"><?= $item->getProduct()->description; ?></small>
+			          </div>
+			          <span class="text-muted">R$ <?= $item->getPrice(); ?></span>
+			        </li>
+				<?php endforeach; ?>
 			
-			<h4>Total: <?= $order->total; ?></h4>
+				<li class="list-group-item d-flex justify-content-between">
+		          <span>Total</span>
+		          <strong>R$ <?= $order->getTotal(); ?></strong>
+		        </li>
+			</ul>
+		</div>
+
+		<div class="col-md-8 order-1">
+			<h4 class="mb-3">Métodos de Pagamento</h4>
 
 			<?php foreach($payments as $payment): ?>
-				<input type="radio" name="payment_method" value="<?= $payment->getID(); ?>" id="<?= $payment->getID(); ?>">
+				<div class="custom-control custom-radio mb-3">
+					<input type="radio" name="payment_method" value="<?= $payment->getID(); ?>" id="<?= $payment->getID(); ?>" class="custom-control-input">
 
-				<label for="<?= $payment->getID(); ?>"><?= $payment->getTitle(); ?></label>
+					<label for="<?= $payment->getID(); ?>" class="custom-control-label"><?= $payment->getTitle(); ?></label>
 
-				<p><?= $payment->getDescription(); ?></p>
+					<span class="text-muted"><?= $payment->getDescription(); ?></span>
 
-				<div>
-					<?= $payment->buildForm(); ?>					
+					<div class="row">
+						<?= $payment->buildForm(); ?>					
+					</div>
 				</div>
 			<?php endforeach;?>
 
-			<div>
-				<input type="submit" name="todoPayment" value="Realizar Pagamento">
-			</div>
-		</form>
-	</div>
-</body>
-</html>
+			<hr class="mb-4">
+
+			<input type="submit" name="todoPayment" value="Finalizar Pagamento" class="btn btn-primary btn-lg btn-block">
+		</div>
+	</form>
+</div>

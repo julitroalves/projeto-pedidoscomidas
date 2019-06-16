@@ -48,7 +48,7 @@
 		  </tbody>
 		</table>
 
-		<h4>Total: <?= $order->total; ?></h4>
+		<h4>Total: <?= $order->getTotal(); ?></h4>
 
 		<div class="text-right">
 			<a class="btn btn-primary" href="/checkout/payment">Ir para o pagamento</a>

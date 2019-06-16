@@ -69,6 +69,14 @@ class CheckoutController extends AbstractController {
 
 		$formData = $request->request->all();
 
+		if (!isset($formData['payment_method']) || empty($formData['payment_method'])) {
+			$this->setFlashMessage('Por favor, selecione algum método de pagamento.');
+
+			$response = new RedirectResponse('/checkout/payment');
+
+			return $response->send();			
+		}
+
 		$paymentID = $formData['payment_method'];
 		$formPaymentID = "form_{$paymentID}";
 		$paymentData = isset($formData[$formPaymentID]) ? $formData[$formPaymentID] : [];

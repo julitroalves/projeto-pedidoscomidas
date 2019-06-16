@@ -34,6 +34,37 @@ class OrderEntity {
 		return $this->status;
 	}
 
+	public function getStatusLabel() {
+		$status = $this->status;
+
+		$label = '';
+
+		switch ($status) {
+			case self::ORDER_STATUS_CART:
+				$label = 'Carrinho';
+				break;
+
+			case self::ORDER_STATUS_WAITING_PAYMENT:
+				$label = 'Pagamento pendente';
+				break;
+
+			case self::ORDER_STATUS_COMPLETED:
+				$label = 'Concluido';
+				break;
+
+			case self::ORDER_STATUS_PAYMENT_APPROVED:
+				$label = 'Pagamento Aprovado';
+				break;
+			
+			default:
+				$label = 'Carrinho';
+
+				break;
+		}
+
+		return $label;
+	}
+
 	public function setItem($item) {
 		$this->items[$item->id] = $item;
 	}
@@ -54,5 +85,20 @@ class OrderEntity {
 
 	public function getItems() {
 		return $this->items;
+	}
+
+	public function calculateTotal() {
+		$items = $this->getItems();
+
+		$total = 0;
+		foreach ($items as $item) {
+			$total += $item->getPrice();
+		}
+
+		return $total;
+	}
+
+	public function getTotal() {
+		return $this->calculateTotal();
 	}
 }

@@ -19,7 +19,7 @@
 	<?php endif; ?>
 
 	<?php if (isset($message) && $message): ?>
-		<p><?= $message; ?></p>
+		<p class="text-center mt-3"><?= $message; ?></p>
 	<?php endif; ?>
 
 	<?php if (isset($content) && $content): ?>
