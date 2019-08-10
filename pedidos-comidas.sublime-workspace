@@ -4,12 +4,44 @@
 		"selected_items":
 		[
 			[
-				"inline",
-				"inline-block\tdisplay"
+				"ORDER",
+				"ORDER_STATUS_PAYMENT_APPROVED"
+			],
+			[
+				"form",
+				"form-group"
+			],
+			[
+				"getPr",
+				"getPrice"
+			],
+			[
+				"quan",
+				"getQuantity"
+			],
+			[
+				"bad",
+				"badge-pill"
+			],
+			[
+				"order",
+				"order"
+			],
+			[
+				"orde",
+				"order"
 			],
 			[
 				"prod",
+				"product"
+			],
+			[
+				"produc",
 				"products"
+			],
+			[
+				"inline",
+				"inline-block\tdisplay"
 			],
 			[
 				"conte",
@@ -26,10 +58,6 @@
 			[
 				"get_cas",
 				"get_class"
-			],
-			[
-				"orde",
-				"orders"
 			],
 			[
 				"payment",
@@ -50,10 +78,6 @@
 			[
 				"cart",
 				"cartService"
-			],
-			[
-				"order",
-				"orderService"
 			],
 			[
 				"Produ",
@@ -150,10 +174,6 @@
 			[
 				"produ",
 				"product"
-			],
-			[
-				"produc",
-				"productService"
 			]
 		]
 	},
@@ -163,43 +183,7 @@
 			"file": "src/Views/home.index.tpl.php",
 			"settings":
 			{
-				"buffer_size": 1111,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Views/header.tpl.php",
-			"settings":
-			{
-				"buffer_size": 1534,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Views/products/page.list.tpl.php",
-			"settings":
-			{
-				"buffer_size": 1059,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Models/Product/ProductService.php",
-			"settings":
-			{
-				"buffer_size": 2355,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/css/styles.css",
-			"settings":
-			{
-				"buffer_size": 154,
+				"buffer_size": 1313,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -242,84 +226,86 @@
 	"expanded_folders":
 	[
 		"/var/www",
-		"/var/www/public",
-		"/var/www/public/css",
 		"/var/www/src",
-		"/var/www/src/Views",
-		"/var/www/src/Views/products"
+		"/var/www/src/Views"
 	],
 	"file_history":
 	[
-		"/var/www/src/Models/AbstractDataMapper.php",
-		"/var/www/src/Models/Product/ProductDataMapper.php",
-		"/var/www/src/Models/Store/Order/OrderService.php",
-		"/var/www/src/Models/Product/ProductService.php",
-		"/var/www/src/Controllers/ProductsController.php",
+		"/var/www/src/Views/cart/page.list.tpl.php",
+		"/var/www/src/Models/Store/OrderLineItem/OrderLineItemEntity.php",
+		"/var/www/src/Views/user/page.view.tpl.php",
+		"/var/www/src/Models/Store/Order/OrderEntity.php",
 		"/var/www/src/Router/Routes.php",
+		"/var/www/src/Controllers/OrdersController.php",
+		"/var/www/src/Controllers/UserController.php",
+		"/var/www/src/Models/Store/Order/OrderDataMapper.php",
+		"/var/www/src/Models/Store/Order/OrderService.php",
+		"/var/www/src/Views/orders/page.list.tpl.php",
+		"/var/www/src/Controllers/AbstractController.php",
+		"/var/www/src/Views/user/page.login.tpl.php",
+		"/var/www/src/Views/user/page.create.tpl.php",
+		"/var/www/src/Views/checkout/payment/page.list.tpl.php",
+		"/var/www/src/Views/header.tpl.php",
 		"/var/www/src/Views/html.tpl.php",
+		"/var/www/src/Controllers/CheckoutController.php",
+		"/var/www/src/Controllers/CartController.php",
+		"/var/www/src/Models/Cart/CartService.php",
+		"/var/www/db/migrations/20190113215320_orders_migration.php",
+		"/var/www/src/Views/cart/page.empty.tpl.php",
+		"/var/www/src/Controllers/ProductsController.php",
+		"/var/www/src/Models/Product/ProductService.php",
+		"/var/www/src/Models/Product/ProductDataMapper.php",
+		"/var/www/src/Models/AbstractDataMapper.php",
+		"/var/www/src/Database/PdoAdapter.php",
+		"/var/www/src/Models/AbstractService.php",
+		"/home/julitroalves/Videos/studio/PHP7/raw/4 - modulo final - templates/Aula 70 - Tematizando Home e Header/Aula 70 - Tematizando Home e Header - parte para-editar.txt",
+		"/var/www/src/Models/Store/OrderLineItem/OrderLineItemService.php",
+		"/var/www/src/Template/SimpleTemplate.php",
+		"/var/www/src/Template/Renderer.php",
 		"/var/www/src/Views/products/page.list.tpl.php",
 		"/var/www/src/Views/products/page.view.tpl.php",
+		"/var/www/public/css/styles.css",
+		"/var/www/src/Views/home.index.tpl.php",
+		"/var/www/src/Controllers/HomeController.php",
+		"/var/www/src/Models/File/FileEntity.php",
+		"/var/www/src/Models/AbstractEntity.php",
 		"/var/www/src/Models/Product/ProductEntity.php",
+		"/var/www/src/Models/User/UserEntity.php",
+		"/var/www/src/Router/RouterManager.php",
 		"/var/www/src/Views/products/page.edit.tpl.php",
 		"/var/www/src/Views/products/page.create.tpl.php",
 		"/var/www/src/DI/Dependencies.php",
-		"/var/www/src/Controllers/HomeController.php",
-		"/var/www/src/Template/SimpleTemplate.php",
-		"/var/www/src/Views/header.tpl.php",
-		"/var/www/src/Views/home.index.tpl.php",
 		"/var/www/src/Application.php",
 		"/var/www/src/Template/SimpleTemplateEngine.php",
-		"/var/www/src/Template/Renderer.php",
 		"/var/www/src/DI/Container.php",
 		"/var/www/src/Bootstrap.php",
-		"/var/www/src/Views/user/page.create.tpl.php",
-		"/var/www/src/Controllers/CheckoutController.php",
 		"/var/www/src/Models/File/FileService.php",
 		"/var/www/src/Models/Store/Checkout/PaymentManager.php",
 		"/var/www/src/Models/Store/Checkout/PaymentService.php",
-		"/var/www/src/Views/checkout/payment/page.list.tpl.php",
 		"/var/www/src/Models/Store/Checkout/Payment/CreditCardPayment.php",
 		"/var/www/src/Models/Store/Checkout/Payment/DepositPayment.php",
 		"/var/www/src/Models/Store/Checkout/Payment/BilletPayment.php",
 		"/var/www/README.md",
-		"/var/www/src/Models/Store/Order/OrderEntity.php",
-		"/var/www/src/Models/Cart/CartService.php",
-		"/var/www/src/Controllers/CartController.php",
-		"/var/www/src/Controllers/OrdersController.php",
 		"/var/www/src/Models/Store/Checkout/Payment/PaymentAbstract.php",
-		"/var/www/src/Controllers/AbstractController.php",
-		"/var/www/src/Views/cart/page.list.tpl.php",
 		"/var/www/src/Models/Store/Checkout/Payment/PaymentInterface.php",
 		"/home/julitroalves/Videos/studio/Aula 65 - Métodos de Pagamento/ps.editar.aula.txt",
-		"/var/www/src/Models/Store/OrderLineItem/OrderLineItemService.php",
-		"/var/www/src/Models/Store/OrderLineItem/OrderLineItemEntity.php",
-		"/var/www/src/Models/AbstractService.php",
 		"/var/www/.gitignore",
-		"/var/www/src/Models/Store/Order/OrderDataMapper.php",
 		"/var/www/db/seeds/UserSeeder.php",
 		"/home/julitroalves/Documents/HouseCursos/Dicas/PHP/refactoring.php",
 		"/home/julitroalves/Documents/HouseCursos/Dicas/PHP/namespaces.php",
 		"/var/www/src/Views/orders/page.edit.tpl.php",
 		"/var/www/src/Database/DBService.php",
-		"/var/www/src/Database/PdoAdapter.php",
-		"/var/www/db/migrations/20190113215320_orders_migration.php",
 		"/var/www/src/Database/DatabaseInterface.php",
-		"/var/www/src/Views/cart/page.empty.tpl.php",
 		"/var/www/src/Views/page.not-authorized.tpl.php",
 		"/var/www/src/Views/page.error.tpl.php",
 		"/var/www/src/Views/orders/page.create.tpl.php",
 		"/var/www/src/Views/orders/page.delete.tpl.php",
 		"/var/www/src/Views/user/page.edit.tpl.php",
-		"/var/www/src/Views/user/page.login.tpl.php",
-		"/var/www/src/Views/user/page.view.tpl.php",
-		"/var/www/src/Router/RouterManager.php",
 		"/var/www/src/Views/orders/page.view.tpl.php",
 		"/var/www/src/Models/Store/OrderLineItem/OrderLineItemDataMapper.php",
 		"/var/www/db/migrations/20190331175504_orders_line_item_migration.php",
 		"/var/www/db/migrations/20181117144356_product_migration.php",
-		"/var/www/src/Controllers/UserController.php",
 		"/var/www/db/migrations/20181226205048_product_cover_field_migration.php",
-		"/var/www/src/Views/orders/page.list.tpl.php",
 		"/var/www/src/Services/Session/Session.php",
 		"/var/www/db/migrations/20190113214227_order_migration.php",
 		"/var/www/db/migrations/20181020140814_users_migration.php",
@@ -327,12 +313,10 @@
 		"/var/www/src/Models/User/UserDataMapper.php",
 		"/var/www/src/Controllers/LoginController.php",
 		"/var/www/src/Views/page.not-found.tpl.php",
-		"/var/www/src/Models/User/UserEntity.php",
 		"/var/www/src/Views/user/login.page.tpl.php",
 		"/var/www/src/Services/Session/SessionInterface.php",
 		"/var/www/src/Models/File/FileDataMapper.php",
 		"/home/julitroalves/Videos/studio/Aula 51 - Upload e Gerenciamento de Arquivos/notas.txt",
-		"/var/www/src/Models/File/FileEntity.php",
 		"/var/www/db/migrations/20181226201525_file_migration.php",
 		"/var/www/vendor/symfony/http-foundation/File/UploadedFile.php",
 		"/var/www/vendor/symfony/http-foundation/File/File.php",
@@ -359,6 +343,35 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ORDER_STATUS_COMPLETED",
+			"<tr>",
+			"</tr>",
+			"class=\"btn btn-primary btn-lg btn-block\"",
+			"payment_method",
+			"h4",
+			"total",
+			"editLineItems",
+			"createLineItems",
+			"editLineItems",
+			"createLineItems",
+			"setItems",
+			"array_walk",
+			"array_",
+			"total",
+			"descr",
+			"ProductService",
+			"productID",
+			"product",
+			"col-",
+			"$user",
+			"getSessionStore",
+			"AbstractEntity",
+			"url",
+			"baseUrl",
+			"base",
+			"{some",
+			"{string",
+			"60",
 			"FileService",
 			"getOne",
 			"Renderer",
@@ -457,36 +470,7 @@
 			"type",
 			"quantity",
 			"productID",
-			"OrderEntity",
-			"product",
-			"data",
-			"var_dump",
-			"page.not-found",
-			"orders/create",
-			"product",
-			"sessionStore",
-			"injector",
-			"page.create",
-			"total",
-			"author",
-			"OrderDataMapper",
-			"OrderEntity",
-			"price",
-			"product",
-			"ProductEntity",
-			"product",
-			"Product",
-			"product",
-			"items",
-			"products",
-			"productMapper",
-			"ProductDataMapper",
-			"FileService",
-			"Product",
-			"products",
-			"productService",
-			"ProductService",
-			"FileService"
+			"OrderEntity"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -520,15 +504,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1111,
+						"buffer_size": 1313,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								668,
-								668
+								174,
+								174
 							]
 						],
 						"settings":
@@ -541,122 +525,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/Views/header.tpl.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1534,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1004,
-								1004
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/Views/products/page.list.tpl.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1059,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								54,
-								54
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/Models/Product/ProductService.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2355,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1182,
-								1182
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 408.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "public/css/styles.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 154,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								62,
-								62
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -710,6 +578,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"header",
+				"src/Views/header.tpl.php"
+			],
+			[
+				"CartC",
+				"src/Controllers/CartController.php"
+			],
+			[
+				"Product",
+				"src/Models/Product/ProductEntity.php"
+			],
 			[
 				"ProductsController",
 				"src/Controllers/ProductsController.php"

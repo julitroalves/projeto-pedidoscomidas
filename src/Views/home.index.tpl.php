@@ -6,7 +6,7 @@
 		<div class="row">
 			<?php foreach($products as $product): ?>
 				<div class="col">
-					<div class="card" style="width: 18rem; margin: 5px">
+					<div class="card" style="width: 20rem; margin: 5px 5px 5px 0">
 						
 						<a href="<?= $product->getUrl(); ?>">
 							<?php if (isset($product->cover)): ?>
